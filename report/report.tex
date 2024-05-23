@@ -19,7 +19,7 @@
 }
 
 \lstset{
-    language=Matlab,
+    language=Matlab, 
     basicstyle=\footnotesize\ttfamily,
     keywordstyle=\color{blue},
     commentstyle=\color{green},
@@ -139,22 +139,47 @@ Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poni�
 
 \subsubsection{\large Interfejs użytkownika aplikacji }
 % --------------------------------------------------------
+% Autor: Jakub Pajak
 % TODO: Opisać Interfejs użytkownika oraz co robią poszczególne funkcje, jak działa aplikacja na poziomie ideowym
+%
+% Status: 
 % --------------------------------------------------------
 
 \subsection{\Large Implementacja połączenia Bluetooth}
 % --------------------------------------------------------
+% Autor: Jakub Pajak
+%
 % TODO: Opisać zasadę działania połączenia Bluetooth poprzez paczkę flutter_blue
+%
+% Status: 
 % --------------------------------------------------------
 
 \subsection{\Large Implementacja przesyłania danych}
 % --------------------------------------------------------
+% Autor: Jakub Pajak
+%
 % TODO: Opisać sposób przekazywania infomracji o przyciśniętym przycisku w postaci całkowitoliczbowej
+%
+% Status: 
 % --------------------------------------------------------
 
 
 \subsection{\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }
+Fragment prezentowanego kodu rozpoczyna się od zadeklarowania zmiennych globalnych opisujących charakterystyki połączenia Bluetooth. Pierwsza charakterystyka określa identyfikator typu GUID serwisu, następna określa na jaki identyfikator przesyłane są zdarzenia typu "request". Ostatnia wartość definiuje indentyfikator na jaki są przesyłane zdarzenia typu 'response". 
+W przypadku aktualnej wersji aplikacji istotna jest tylko wartość identyfikująca serwis oraz zdarzenia typu request, ponieważ mikrokontroler nie zwraca żadnej informacji do aplikacji. W razie dalszego rozwoju projektu zostanie zaimplementowanie wyświetlanie diagnostyki robota, stanu naładowania baterii oraz stanu pracy silników. 
 
+Funkcja \texttt{t5Callback()} ma za zadanie pobierać wartość która aktualnie została przesłana do kanału Bluetooth z poziomu aplikacji. Argumenty wejściowe funkcji to urządzenie z którym Arduino nawiązało połączenie, drugi argument to wcześniej wspomniany identyfikator zdarzenia "request".
+
+Następnie wartość jest odczytywana z kanału za pomocą funkcji \texttt{readValue()}. Funkcja ta jest częścią biblioteki \texttt{ArduinoBLE.h}.
+
+W funkcji \texttt{setup()} następuje inicjalizacja odpowiednich charakterystyk oraz za pomocą funkcji \newline \texttt{setEventHandler()} zostaje określona sytuacja w której nastąpi wywołanie funkcji \texttt{t5Callback} oraz odczytanie danych z kanału. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/code_snaps/bt_con_arduino.png"}
+    \caption{Framgent kodu źródłowego przedstawiający implementację konfiguracji kanału Bluetooth na Arduino}
+    \label{fig:bt_con_arduino}
+\end{figure}
 
 \subsection{\Large Wykonanie projektu obudowy robota w 3D}
 % --------------------------------------------------------
@@ -182,8 +207,27 @@ Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poni�
 %
 % TODO: Opisać sposób podłączenia czujników oraz kod weryfikujący podłączenie
 %
-% Status: 
+% Status: 80% done
 % --------------------------------------------------------
+We wczesnej fazie planowania zakładano wykorzystanie ultradźwiękowych czujników odległości. Pomysł ten okazał się nietrafiony ze względu na sposób przekazywania danych przez te czujniki. Każdy czujnik posiada dwa wyprowadzenia, co przy użyciu ośmiu czujników wymagałoby wykorzystania co najmniej 16 pinów Arduino.
+
+Następnie analiza skupiła się na wykorzystaniu magistrali I2C, która umożliwia podłączenie dużej liczby czujników za pomocą niewielkiej liczby pinów. Kluczowym warunkiem jest poprawna komunikacja między czujnikiem a mikrokontrolerem.
+
+Laserowe czujniki odległości VL530L0X okazały się trafnym wyborem ze względu na ich korzystny stosunek jakości do ceny. Pomiary odległości są wystarczająco dokładne, a biorąc pod uwagę charakter obiektu wykrywanego, wysoka precyzja nie jest wymagana.
+
+Czujniki zostały podłączone zgodnie z przeznaczeniem poprzez magistralę I2C. Kluczową rolę w podłączaniu wielu identycznych czujników odegrało użycie dodatkowego pinu XSHUT oraz odpowiedniej sekwencji kodu, aby pomyślnie zmienić adres czujnika na magistrali I2C. 
+
+Pierwszym krokiem jest ustawienie odpowiedniego pinu GPIO (ang. General Purpose Input/Output) Arduino, podłączonego do pinu XSHUT czujnika, w trybie OUTPUT. Następnie należy skorzystać z funkcji \texttt{setAddress()}, aby ustawić odpowiedni adres dla wybranego czujnika. Kolejnym krokiem jest przełączenie stanu pinu Arduino na INPUT oraz odczekanie 10 milisekund.
+
+Wykonanie powyższej sekwencji gwarantuje poprawną zmianę adresu czujnika na magistrali I2C. Użycie samej funkcji \texttt{setAddress()} bez zastosowania pinu XSHUT nie zmieni adresu czujnika.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.5\textwidth]{"src/code_snaps/sensor_init.png"}
+    \caption{Fragment kodu źródłowego przedstawiający sekwencję konieczną do zmiany adresu czujnika}
+    \label{fig:sensor_init}
+\end{figure}
+
 
 \subsection{\Large Montaż silników wewnątrz dolnej komory obudowy}
 

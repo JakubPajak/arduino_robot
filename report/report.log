@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  23 MAY 2024 18:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  23 MAY 2024 20:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/jakub/Desktop/PR/report/report.tex
-(c:/Users/jakub/Desktop/PR/report/report.tex
+**c:/Users/jakub/Desktop/PR/SOFT/report/report.tex
+(c:/Users/jakub/Desktop/PR/SOFT/report/report.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
 (C:\Users\jakub\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -293,28 +293,44 @@ Overfull \hbox (5.46864pt too wide) in paragraph at lines 12--12
 \openout3 = `report.toc'.
 
  [1] [2]
-Overfull \hbox (3.13068pt too wide) in paragraph at lines 168--168
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 171.
+ (C:\Users\jakub\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+<src/code_snaps/bt_con_arduino.png, id=24, 2551.5325pt x 2047.65pt>
+File: src/code_snaps/bt_con_arduino.png Graphic file (type png)
+<use src/code_snaps/bt_con_arduino.png>
+Package pdftex.def Info: src/code_snaps/bt_con_arduino.png  used on input line 179.
+(pdftex.def)             Requested size: 455.24411pt x 365.34291pt.
+ [3]
+Overfull \hbox (3.13068pt too wide) in paragraph at lines 193--193
 []\T1/cmr/bx/n/14.4 Implementacja pro-stego kodu we-ry-fi-ku-j¡-cego pra-wi-dªowe pod-
  []
 
-[3] (report.aux)
+[4 <./src/code_snaps/bt_con_arduino.png>]
+<src/code_snaps/sensor_init.png, id=36, 899.36pt x 560.0925pt>
+File: src/code_snaps/sensor_init.png Graphic file (type png)
+<use src/code_snaps/sensor_init.png>
+Package pdftex.def Info: src/code_snaps/sensor_init.png  used on input line 226.
+(pdftex.def)             Requested size: 227.62206pt x 141.75768pt.
+ [5 <./src/code_snaps/sensor_init.png>] (report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6813 strings out of 474424
- 112786 string characters out of 5741740
+ 6864 strings out of 474424
+ 114329 string characters out of 5741740
  1937496 words of memory out of 5000000
- 29117 multiletter control sequences out of 15000+600000
- 566469 words of font info for 47 fonts, out of 8000000 for 9000
+ 29164 multiletter control sequences out of 15000+600000
+ 566782 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,732b,355s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2488.pk>
-Output written on report.pdf (4 pages, 182936 bytes).
+ 57i,6n,65p,737b,355s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1728.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2488.pk>
+Output written on report.pdf (6 pages, 557900 bytes).
 PDF statistics:
- 396 PDF objects out of 1000 (max. 8388607)
+ 451 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
