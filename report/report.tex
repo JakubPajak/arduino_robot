@@ -1,0 +1,266 @@
+\documentclass{report}
+\usepackage{tocloft}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\geometry{
+    a4paper,
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm,
+}
+
+\lstset{
+    language=Matlab,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{lightgray},
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true
+}
+
+
+\setcounter{tocdepth}{3}
+\setlength{\cftbeforechapskip}{15pt} 
+\setlength{\cftbeforesecskip}{8pt} 
+\setlength{\cftbeforesubsecskip}{5pt} 
+\setlength{\cftbeforesubsubsecskip}{5pt}
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\thesection\arabic{subsection}.}
+\renewcommand\thesubsubsection{\thesubsection\arabic{subsubsection}.}
+\setcounter{secnumdepth}{3}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    \begin{figure}
+        \centering 
+        \includegraphics[width=0.5\textwidth]{"src/logo.png"}
+    \end{figure}
+    \Huge
+    Zajęcia Projektowe
+    \par
+    \textbf{Podstawy Robotyki}
+    
+    \vspace*{1cm}
+
+    \vspace{0.5cm}
+    \LARGE \textit{Platforma jeżdżąca automatycznie utrzymująca odległość od ściany}
+    
+    \vspace{1.5cm}
+    
+    \textbf{Autorzy:} 
+    \par
+    Jakub Pająk 
+    \par
+    Łukasz Grabarski
+    \par 
+    Krzysztof Grądek
+    \par 
+    Piotr Legień
+    \par
+    Bartosz Wuwer
+    \vspace*{1.5cm}
+    \par AiR Grupa 5TI
+    
+    \vfill
+    
+    \Large 30.05.2024
+    
+\end{titlepage}
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+\section{\LARGE Wprowadzenie}
+\subsection{\Large Cel projektu}
+Celem niniejszego projektu jest opracowanie mobilnej platformy robotycznej, zdolnej do automatycznego utrzymywania określonej odległości od ściany. Platforma ta bazować będzie na mikrokontrolerze Arduino oraz laserowych czujnikach odległości typu ToF (ang. Time of Flight). Projekt ma na celu zbadanie i rozwinięcie zaawansowanych algorytmów sterowania i nawigacji, które umożliwią precyzyjne śledzenie ścian w zmiennych warunkach środowiskowych. Dodatkowym celem jest stworzenie wszechstronnego rozwiązania, które można łatwo dostosować do różnych zastosowań, takich jak roboty sprzątające, inspekcyjne czy systemy autonomiczne w logistyce.
+
+\subsection{\Large Założenia wstępne}
+Robot zostanie zaprojektowany w oparciu o mikrokontroler Arduino Uno R4, wybrany ze względu na wbudowany moduł Bluetooth LE (LE - Low Energy), co umożliwi zdalne monitorowanie i kontrolę. Silniki zastosowane w projekcie muszą być wyposażone w enkodery, bądź umożliwiać ich dołączenie, co zapewni precyzyjne sterowanie. Czujniki odległości zostaną podłączone do mikrokontrolera za pomocą magistrali I2C. Ze względu na planowaną liczbę czujników (osiem), połączenie ich innymi metodami nie byłoby efektywne.
+
+Zasilanie platformy musi być wystarczające do obsługi co najmniej jednego mikrokontrolera oraz czterech silników. Optymalnym rozwiązaniem będzie zastosowanie czterech ogniw litowo-jonowych połączonych w konfiguracji 2S2P, co zapewni odpowiednią wydajność energetyczną. Dodatkowo, konieczne jest zastosowanie układu zarządzania baterią BMS (ang. Battery Management System), który zabezpieczy ogniwa przed nadmiernym rozładowaniem i przeładowaniem.
+
+Całość konstrukcji zostanie zamknięta w obudowie wykonanej techniką druku 3D. Obudowa będzie podzielona na dwie główne sekcje: dolną, w której zostaną umieszczone silniki oraz ogniwa wraz z układem BMS, oraz górną, zawierającą płytkę stykową, mikrokontroler oraz czujniki. Taka konstrukcja zapewni łatwy dostęp do kluczowych komponentów i umożliwi ich sprawną wymianę w razie potrzeby.
+
+Początkowo plan realizacji projektu zakładał stworzenie aplikacji, która byłaby odpowiedzialna za zdalne sterowanie robotem poprzez moduł BLE (ang. Bluetooth Low Energy). W wyniku późniejszych konsultacji plan uległ zmianie jednak aplikacja zostanie wykorzystana jako wsparcie dla automatycznego trybu robota.
+
+% \subsection{\Large Harmonogram realizacji projektu}
+% \subsubsection{\large Okres 1}
+% Wykonanie projektu obuydowy robota. Wykonanie bazy aplikacji mobilnej w celu 
+
+\section{\LARGE Realizacja projektu}
+Projekt był realizowany petapami, jednak nie został zastosowany szczegółowy harmonogram. 
+Przybliżone etapy rozwoju projektu:
+\begin{enumerate}
+    \item Napisanie aplikacji w wersji dedykowanej systemowi Android w języku Dart,
+    \item Realizacja prostego skryptu w Arduino IDE w celu weryfikacji połączenia BLE z mikrokontrolerem,
+    \item Wykonanie projektu obudowy robota w 3D oraz przygotowanie do druku,
+    \item Wykonanie prostego kodu w celu weryfikacji poprawności podłączenia silników do sterownika,
+    \item Podłączenie oraz weryfikacja poprawności działania laserowych czujników odległości,
+    \item Montaż silników wewnątrz dolnej komory obudowy,
+    \item Montaż ogniw wraz z układem BMS,
+    \item Integracja czujników z silnikami oraz implementacja logiki sterowania,
+    \item Testy poprawności działania algorytmu sterującego.
+\end{enumerate}
+
+\subsection{\Large Panel sterowania w aplikacji}
+Podczas analizy możliwych rozwiązań problemu zdalnego sterowania robotem wybór padł na wykonanie aplikacji mobilnej oraz przesyłanie odpowiednich komend za pomocą protokołu BLE. Protokół BLE jest pewnym szczególnym przypadkiem ogólnego protokołu Bluetooth, jest on szczególnie często spotykany w przypadku mniej zaawansowanych mikrokontrolerów takich jak Arduino Uno R4. Dzięki odpowiedniej architekturze, protokól ten pozwala na bardziej efektywne zarządzanie pobieraną energią jednocześnie zachowując niezbędne funkcjonalności. 
+
+Przez wzgląd na wcześniej nabyte umijętności tworzenia aplikacji za pomocą języka Dart przez jednego z członków sekcji, prace nad projektem rozpoczęto od implementacji podstawowej wersji aplikacji realizującej proste przesyłanie informacji w postaci całkowitoliczbowej w celu późniejszej interpretacji otrzymanych danych w środowisku Arduino. 
+
+Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poniższym raporcie szczegółowo omówiona. Zostanie przedstawiony podstawowy interfejs graficzny oraz zasada działania kluczowych funkcji, takich jak połączenie lub realizacja przesyłu danych. Autor uważa, iż pewne wyszczególnienie części metod oraz zastosowanych bibliotek może pomóc niektórym osobom w prostrzym znalezieniu informacji na temat poprawnie działającego połączenia z mikrokontrolerem Arduino poprzez Bluetooth.
+
+\subsubsection{\large Interfejs użytkownika aplikacji }
+% --------------------------------------------------------
+% TODO: Opisać Interfejs użytkownika oraz co robią poszczególne funkcje, jak działa aplikacja na poziomie ideowym
+% --------------------------------------------------------
+
+\subsection{\Large Implementacja połączenia Bluetooth}
+% --------------------------------------------------------
+% TODO: Opisać zasadę działania połączenia Bluetooth poprzez paczkę flutter_blue
+% --------------------------------------------------------
+
+\subsection{\Large Implementacja przesyłania danych}
+% --------------------------------------------------------
+% TODO: Opisać sposób przekazywania infomracji o przyciśniętym przycisku w postaci całkowitoliczbowej
+% --------------------------------------------------------
+
+
+\subsection{\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }
+
+
+\subsection{\Large Wykonanie projektu obudowy robota w 3D}
+% --------------------------------------------------------
+% Autor: Łukasz Grabarski
+%
+% TODO: Opisać proces oraz sposób wykonania projektu obudowy w 3D
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}
+
+% --------------------------------------------------------
+% Autor: Krzysztof Grądek
+%
+% TODO: Opisać kod oraz sposób podłączenia silników do sterownika + krótki opis sterownika
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}
+
+% --------------------------------------------------------
+% Autor: Jakub Pająk
+%
+% TODO: Opisać sposób podłączenia czujników oraz kod weryfikujący podłączenie
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Montaż silników wewnątrz dolnej komory obudowy}
+
+% --------------------------------------------------------
+% Autor: Piotr Legień && Krzysztof Grądek
+%
+% TODO: Opisać sposób montażu silników oraz usztywnienia wału silnika + montaż kół
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}
+
+% --------------------------------------------------------
+% Autor: Bartosz Wuwer && Piotr Legień
+%
+% TODO: Opisać sposób połączenia ogniw oraz układ BMS (po co jest etc.)
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}
+
+% --------------------------------------------------------
+% Autor: Jakub Pająk && Łukasz Grabarski
+%
+% TODO: Opisać kod implementujący integrację czujników z silnikami
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Testy poprawności działania algorytmu sterującego}
+
+% --------------------------------------------------------
+% Autor: Wszyscy
+%
+% TODO: Opisać proces testowania oraz rezultaty algorytmu testującego
+%
+% Status: 
+% --------------------------------------------------------
+
+\section{\LARGE Napotkane problemy}
+\subsection{\Large Połączenie aplikacji z Arduino}
+% --------------------------------------------------------
+% Autor: Jakub Pająk
+%
+% TODO: Opisać problemy napotkane podczas tworzenia aplikacji 
+%
+% Status: 
+% --------------------------------------------------------
+
+\subsection{\Large Podłączenie laserowych czujników odległości}
+% --------------------------------------------------------
+% Autor: Jakub Pająk
+%
+% TODO: Opisać problemy podczas podłączenia czujników laserowych
+%
+% Status: 
+% --------------------------------------------------------
+
+
+\subsection{\Large Montaż silników oraz kół}
+% --------------------------------------------------------
+% Autor: Wszyscy
+%
+% TODO: Opisać problemy podczas montażu
+%
+% Status: 
+% --------------------------------------------------------
+
+
+\section{\LARGE Podsumowanie}
+% --------------------------------------------------------
+% Autor: Wszyscy
+%
+% TODO: Napisać zgrabne podsumowanie projektu, czego się nauczyliśmy oraz sensowne wnioski do popełnionych błędów.
+%
+% Status: 
+% --------------------------------------------------------
+\end{document}
