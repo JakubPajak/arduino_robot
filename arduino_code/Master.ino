@@ -6,8 +6,21 @@
 // ------------------------------
 
 int dist_array[7];
+bool wneka = false;
+bool exitingAlcove = false;
+int current_direction = 0;
+unsigned long alcoveExitTime = 0;
 
-#define SAFE_DIST 100
+#define FORWARD_TIME_AFTER_ALCOVE 10000
+
+enum CURRENT_DIR{
+  STOP,
+  MOVE_LEFT,
+  MOVE_RIGHT,
+  MOVE_FORWARD,
+};
+
+#define SAFE_DIST 250
 
 // XSHUT PINS are responsible for enabling the change of the VL530LX sensor address
 #define XSHUT_pin2 2      
@@ -125,7 +138,7 @@ Serial.println("Master initialized properly.");
 // ------------------------------
 
 void loop() {
-  searchForDevices();
+  //searchForDevices();
 
   readFromSensor();
 
@@ -133,8 +146,7 @@ void loop() {
 
   sendSteering();
 
-
-  delay(2500);
+  delay(100);
 }
 
 
@@ -178,53 +190,100 @@ void searchForDevices() {
 
 // This function is used to read data from sensors
 void readFromSensor() {
-  Serial.print("Odczyt z pierwszego czujnika: ");
-  Serial.println(Sensor1.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z pierwszego czujnika: ");
+  // Serial.println(Sensor1.readRangeContinuousMillimeters());
   dist_array[0] = Sensor1.readRangeContinuousMillimeters();
 
-  Serial.print("Odczyt z drugiego czujnika: ");
-  Serial.println(Sensor2.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z drugiego czujnika: ");
+  // Serial.println(Sensor2.readRangeContinuousMillimeters());
   dist_array[1] = Sensor2.readRangeContinuousMillimeters();
 
-  Serial.print("Odczyt z 3 czujnika: ");
-  Serial.println(Sensor3.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z 3 czujnika: ");
+  // Serial.println(Sensor3.readRangeContinuousMillimeters());
   dist_array[2] = Sensor3.readRangeContinuousMillimeters();
 
-  Serial.print("Odczyt z 4 czujnika: ");
-  Serial.println(Sensor4.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z 4 czujnika: ");
+  // Serial.println(Sensor4.readRangeContinuousMillimeters());
   dist_array[3] = Sensor4.readRangeContinuousMillimeters();
 
-  Serial.print("Odczyt z 5 czujnika: ");
-  Serial.println(Sensor5.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z 5 czujnika: ");
+  // Serial.println(Sensor5.readRangeContinuousMillimeters());
   dist_array[4] = Sensor5.readRangeContinuousMillimeters();
 
-  Serial.print("Odczyt z 6 czujnika: ");
-  Serial.println(Sensor6.readRangeContinuousMillimeters());
+  // Serial.print("Odczyt z 6 czujnika: ");
+  // Serial.println(Sensor6.readRangeContinuousMillimeters());
   dist_array[5] = Sensor6.readRangeContinuousMillimeters();
 }
 
 // This function will be used to process and prepare data to be sent to slave
 int processSensorInfo() {
-  // If the distance at the front of the robot is smaller than SAFE_DIST then the robot will stop
-  if((dist_array[2] <= SAFE_DIST) && (dist_array[3] <= SAFE_DIST)) {
-    Serial.println("ENGINES STOP");
-    return 0;
+  unsigned long currentTime = millis();
+
+  // Tryb normalny
+  if (!wneka) {
+    // Jeśli robot znajduje się w otwartej przestrzeni, porusza się w prawo
+    if ((dist_array[4] > SAFE_DIST && dist_array[1] > SAFE_DIST) && 
+        (dist_array[2] > SAFE_DIST && dist_array[3] > SAFE_DIST)) {
+      Serial.println("ENGINES TO RIGHT");
+      current_direction = CURRENT_DIR::MOVE_RIGHT;
+      return CURRENT_DIR::MOVE_RIGHT;
+    }
+
+    // Jeśli robot napotyka przeszkodę z przodu, wchodzi w tryb wnęki
+    if ((dist_array[2] <= SAFE_DIST) && (dist_array[3] <= SAFE_DIST)) {
+      current_direction = CURRENT_DIR::MOVE_LEFT;
+      Serial.println("ENGINES TO LEFT");
+      wneka = true;
+      return CURRENT_DIR::MOVE_LEFT;
+    }
+
+    // Jeśli przed robotem nie ma przeszkód, porusza się do przodu
+    if (dist_array[2] > SAFE_DIST && dist_array[3] > SAFE_DIST) {
+      Serial.println("ENGINES FORWARD");
+      current_direction = CURRENT_DIR::MOVE_FORWARD;
+      return CURRENT_DIR::MOVE_FORWARD;
+    }
+
+    // Jeśli odległość od ściany jest większa niż bezpieczna, porusza się w prawo
+    if ((current_direction != CURRENT_DIR::MOVE_LEFT) && dist_array[4] > SAFE_DIST && dist_array[1] > SAFE_DIST) {
+      Serial.println("ENGINES TO RIGHT");
+      current_direction = CURRENT_DIR::MOVE_RIGHT;
+      return CURRENT_DIR::MOVE_RIGHT;
+    }
   }
 
-  //If the distance to the wall is greater than SAFE_DIST then move to the right
-  if(dist_array[4] > SAFE_DIST + 20) {
-    Serial.println("ENGINES TO RIGHT");
-    return 1;
+  // Tryb wnęki
+  if (wneka) {
+    // Jeśli przed robotem jest przeszkoda, kontynuuje ruch w lewo
+    if ((dist_array[2] <= SAFE_DIST) && (dist_array[3] <= SAFE_DIST)) {
+      Serial.println("ENGINES TO LEFT - WNEKA");
+      current_direction = CURRENT_DIR::MOVE_LEFT;
+      return CURRENT_DIR::MOVE_LEFT;
+    }
+
+    // Warunek wyjechania z wnęki - jeśli robot ma bezpieczną odległość z przodu i z boku
+    if(!exitingAlcove && dist_array[2] > SAFE_DIST && dist_array[3] > SAFE_DIST) {
+      Serial.println("EXITING ALCOVE, SWITCHING TO FORWARD MODE");
+      exitingAlcove = true;
+      alcoveExitTime = currentTime;
+      current_direction = CURRENT_DIR::MOVE_FORWARD;
+      return CURRENT_DIR::MOVE_FORWARD;
+    }
   }
 
-  if(dist_array[2] > SAFE_DIST && dist_array[3] > SAFE_DIST){
-    Serial.println("ENGINES FORWARD");
-    return 3;
+  // Po wyjechaniu z wnęki, jedź prosto przez określony czas
+  if (exitingAlcove) {
+    if (currentTime - alcoveExitTime < FORWARD_TIME_AFTER_ALCOVE) {
+      Serial.println("ENGINES FORWARD AFTER ALCOVE");
+      current_direction = CURRENT_DIR::MOVE_FORWARD;
+      return CURRENT_DIR::MOVE_FORWARD;
+    } else {
+      Serial.println("RESUMING NORMAL MODE");
+      wneka = false;
+      exitingAlcove = false;
+    }
   }
-
-  return 0;
 }
-
 
 // This function is a very basic example of sending value to slave via I2C BUS
 void sendSteering() {
