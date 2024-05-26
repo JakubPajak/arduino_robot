@@ -197,8 +197,26 @@ W funkcji \texttt{setup()} następuje inicjalizacja odpowiednich charakterystyk 
 %
 % TODO: Opisać kod oraz sposób podłączenia silników do sterownika + krótki opis sterownika
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
+
+Do połączenia silników z Arduino wykorzystano nakładkę Iduino ST1138. Umożliwia ona sterowanie czterema silnikami prądu stałego, o poborze prądu do 600 mA i napięciu zasilania do 36 V. Nakładka jest zasilana dwoma ogniwami 18650.
+
+Weryfikacja połączenia silników została wykonana przy użyciu skryptu zamieszczonego poniżej. Na początku skryptu dodane są biblioteki Wire i AFMotor. Biblioteka Wire jest wykorzystywana do połączenia obu modułów Arduino w konfiguracji master-slave, natomiast biblioteka AFMotor służy do sterowania silnikami z nakładki Iduino.
+
+W następnych liniach zdefiniowane są: adres urządzenia slave oraz globalna wartość bezpiecznego dystansu, który jest potrzebny, aby w przypadku wystającego gzymsu, który mógłby ominąć czujniki, pojazd nie zahaczył o niego.
+
+Dalsza część kodu zawiera wykorzystanie biblioteki AFMotor i przypisanie konkretnych silników do zmiennych.
+
+W ostatniej części, czyli setup, znajduje się połączenie przez bibliotekę Wire, rozpoczęcie komunikacji z prędkością 9600 bitów na sekundę (Serial.begin(9600)) oraz ustawienie prędkości wszystkich silników.
+
+Do weryfikacji działania silników można zakomentować pozostałe ustawienia setSpeed, tak aby pozostało tylko jedno i sprawdzić, który silnik jest uruchomiony.
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/code_snaps/eng_ste_arduino.png"}
+    \caption{Framgent kodu źródłowego przedstawiający weryfikacje prawidłowego połączenia silników}
+    \label{fig:eng_ste_arduino}
+\end{figure}
 
 \subsection{\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}
 

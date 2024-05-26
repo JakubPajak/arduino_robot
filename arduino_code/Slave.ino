@@ -26,16 +26,12 @@ int rd; // Global variable that stores value from I2C BUS
 void setup() {
 
   Wire.begin(SLAVE_ADDR);
-
   Wire.onReceive(receiveEvent);
-
   Serial.begin(9600);
-
   motor1.setSpeed(250);  
   motor2.setSpeed(250);  
   motor3.setSpeed(250);  
   motor4.setSpeed(250);  
-
   Serial.println("Set up done.");
 }
 
