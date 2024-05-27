@@ -116,7 +116,7 @@ Początkowo plan realizacji projektu zakładał stworzenie aplikacji, która by�
 % Wykonanie projektu obuydowy robota. Wykonanie bazy aplikacji mobilnej w celu 
 
 \section{\LARGE Realizacja projektu}
-Projekt był realizowany petapami, jednak nie został zastosowany szczegółowy harmonogram. 
+Projekt był realizowany etapami, jednak nie został zastosowany szczegółowy harmonogram. 
 Przybliżone etapy rozwoju projektu:
 \begin{enumerate}
     \item Napisanie aplikacji w wersji dedykowanej systemowi Android w języku Dart,
@@ -177,18 +177,131 @@ W funkcji \texttt{setup()} następuje inicjalizacja odpowiednich charakterystyk 
 \begin{figure}[H]
     \centering
     \includegraphics*[width=1.0\textwidth]{"src/code_snaps/bt_con_arduino.png"}
-    \caption{Framgent kodu źródłowego przedstawiający implementację konfiguracji kanału Bluetooth na Arduino}
+    \caption{Fragment kodu źródłowego przedstawiający implementację konfiguracji kanału Bluetooth na Arduino}
     \label{fig:bt_con_arduino}
 \end{figure}
 
-\subsection{\Large Wykonanie projektu obudowy robota w 3D}
+
+\newpage
+\subsection{\Large Proces wykonywania projektu obudowy robota}
 % --------------------------------------------------------
 % Autor: Łukasz Grabarski
 %
 % TODO: Opisać proces oraz sposób wykonania projektu obudowy w 3D
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
+
+Proces projektowania obudowy dla platformy jeżdżącej stanowił wieloetapowe zadanie, które wymagało dokładnego zaplanowania i licznych poprawek. Pierwsza faza obejmowała stworzenie prototypu, który miał na celu optymalne rozmieszczenie komponentów oraz weryfikację ich poprawnego działania. 
+Ten etap pozwalał zidentyfikować ewentualne problemy konstrukcyjne i funkcjonalne na wczesnym etapie prac.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.4\textwidth]{"src/Robot_pics/Build_1.jpg"}
+    \caption{Prototypowa konstrukcja mająca na celu sprawdzenie poprawności działania komponentów.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+Kolejnym krokiem było opracowanie specjalnej obudowy, zdolnej pomieścić wszystkie wymagane elementy, przy jednoczesnym zachowaniu odpowiedniej geometrii kół szwedzkich (zwanych również kołami Mecanum). 
+Aby robot działał zgodnie z założeniami, koła musiały być rozmieszczone w orientacji X Y równych odstępach od siebie, a ich rolki powinny być skierowane do środka. Konieczne jest aby z rzutu górnego posiadał przedłużenie osi kół w kształcie znaku X. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.5\textwidth]{"src/Robot_pics/Mecanum_lines.png"}
+    \caption{Plan rozmieszczenia kół szwedzkich. Kluczowe jest zachowanie kół w równych odstępach od siebie oraz utworzenie znaku X.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/Robot_pics/blender.png"}
+    \caption{Pierwsza wersja projektu zamodelowana w programie Blender 4.1.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+Jednakże podczas pierwszego etapu projektu nastąpiły problemy logiczne i konstrukcyjne. Pierwotnie używany darmowy program Blender 4.1 okazał się niewystarczający ze względu na niezgodność formatów eksportu z wymaganiami dostępnej drukarki 3D. 
+W związku z tym, konieczne było przejście na bardziej zaawansowane narzędzie, jakim jest AutoDesk Fusion. To oprogramowanie pozwoliło na dokładniejsze zaprojektowanie modelu, uwzględniając specyfikację drukarki, która posiadała obszar roboczy o wymiarach 25 cm x 25 cm. 
+Z tego powodu, model musiał zostać zaprojektowany od nowa, z uwzględnieniem ograniczeń.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/Robot_pics/Fusion 1.png"}
+    \caption{Wizualizacja gotowego modelu w programie AutoDesk Fusion.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+\newpage
+
+Gotowy produkt składa się z dwóch pięter, z których każde pełni inną funkcje. 
+Pierwsze piętro to "piętro maszynowe", gdzie umieszczone zostały moduły napędowe, takie jak silniki kątowe z przekładnia oraz ogniwa zasilające w ilości dwóch wraz ze sterownikiem BMS. 
+Wszystkie istotne kable zostały przeprowadzone przez specjalnie przygotowany otwór do drugiego piętra.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{"src/Robot_pics/Dol.png"}
+        \caption{Widok rzutu górnego na pierwsze piętro modelu. Znajdują się w nim silniki kątowe z przekładnią oraz miejsce na ogniwa zasilające wraz z BMS.}
+        \label{fig:zdjecie1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{"src/Robot_pics/Dol 1.png"}
+        \caption{Widok rzutu bocznego na pierwsze piętro modelu.}
+        \label{fig:zdjecie2}
+    \end{minipage}
+\end{figure}
+
+Drugie piętro to "mózg operacyjny" całego projektu. Zawiera ono kluczowe połączenia elektroniczne, w tym dwa mikrokontrolery Arduino UNO 4 i 3 w konfiguracji Master-Slave, oraz osiem czujników laserowych umieszczonych w przygotowanych otworach na ścianach bocznych. 
+Takie rozmieszczenie i organizacja komponentów pozwalają na efektywne zarządzanie funkcjami robota.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{"src/Robot_pics/Gora.png"}
+        \caption{Widok rzutu górnego na drugie piętro modelu. Znajdują się w nim dwa mikronotrolery Arduino UNO oraz płytka stykowa.}
+        \label{fig:zdjecie1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{"src/Robot_pics/Gora 1.png"}
+        \caption{Widok rzutu bocznego na drugie piętro modelu.}
+        \label{fig:zdjecie2}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/Robot_pics/Fusion 3.png"}
+    \caption{Widok rzutu bocznego na specjalnie przygotowane miejsca do wsunięcia czujników laserowych.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth]{"src/Robot_pics/Fusion 2.png"}
+    \caption{Gotowy model przesłany do wydruku. Został pozbawiony elementów stylistycznych takich jak koła, silniki kątowe, mikrokontrolerów Arduino UNO oraz czujników laserowych.} 
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+\newpage
+
+Gotowy model zawiera się w wymiarach 20 cm x 20 cm x 15 cm oraz wykonuje wszystkie zadane ruchy zdolne do wykonania tylko przy pomocy
+kół szwedzkich. Pojazd wykonuje jazdę w kierunku w przód i w tył oraz w lewo i w prawo jak i obrót w miejscu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.5\textwidth]{"src/Robot_pics/Finished.png"}
+    \caption{Gotowy model po złożeniu wszystkich elementów w całość.}
+    \label{fig:bt_con_arduino}
+\end{figure}
+
+
 
 \subsection{\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}
 
@@ -267,6 +380,7 @@ Wykonanie powyższej sekwencji gwarantuje poprawną zmianę adresu czujnika na m
 % Status: 
 % --------------------------------------------------------
 
+\newpage
 \subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}
 
 % --------------------------------------------------------
@@ -274,8 +388,39 @@ Wykonanie powyższej sekwencji gwarantuje poprawną zmianę adresu czujnika na m
 %
 % TODO: Opisać kod implementujący integrację czujników z silnikami
 %
-% Status: 
+% Status: Łukasz 50% (jeszcze coś dopiszę)
 % --------------------------------------------------------
+
+\subsubsection{\Large Slave}
+
+Mikrokontroler Arduino UNO 3 skonfigurowany do pracy typu Slave odbiera paczkę danych przez zmienną "rd" wysyłane przez Master.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.4\textwidth]{"src/code_snaps/Comunication_slave.png"}
+    \caption{Fragment kodu źródłowego przedstawiający odbiór komunikatów przesyłanych przez mikrokontroler Master.}
+    \label{fig:sensor_init}
+\end{figure}
+
+Zgodnie z odbieranym komunikatami o zmianie kierunku indeksowanymi od 0 do 3, program wywołuje odpowiednie funkcje. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.4\textwidth]{"src/code_snaps/movement_implementation.png"}
+    \caption{Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}
+    \label{fig:sensor_init}
+\end{figure}
+
+\newpage
+
+Funkcje określające kierunek jazdy zostały skonstruowane wedle logiki i geometrii działania kół szwedzkich.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.7\textwidth]{"src/Robot_pics/Movement.png"}
+    \caption{Wizualizacja zależności kierunku jazdy od obrotu kół szwedzkich.}
+    \label{fig:sensor_init}
+\end{figure}
 
 \subsection{\Large Testy poprawności działania algorytmu sterującego}
 
