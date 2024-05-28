@@ -4,20 +4,20 @@
 \contentsline {subsection}{\numberline {1.2.}\Large Założenia wstępne}{2}{}%
 \contentsline {section}{\numberline {2.}\LARGE Realizacja projektu}{2}{}%
 \contentsline {subsection}{\numberline {2.1.}\Large Panel sterowania w aplikacji}{3}{}%
-\contentsline {subsubsection}{\numberline {2.1.1.}\large Interfejs użytkownika aplikacji }{3}{}%
-\contentsline {subsection}{\numberline {2.2.}\Large Implementacja połączenia Bluetooth}{3}{}%
-\contentsline {subsection}{\numberline {2.3.}\Large Implementacja przesyłania danych}{3}{}%
-\contentsline {subsection}{\numberline {2.4.}\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }{3}{}%
-\contentsline {subsection}{\numberline {2.5.}\Large Proces wykonywania projektu obudowy robota}{5}{}%
-\contentsline {subsection}{\numberline {2.6.}\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}{9}{}%
-\contentsline {subsection}{\numberline {2.7.}\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}{10}{}%
-\contentsline {subsection}{\numberline {2.8.}\Large Montaż silników wewnątrz dolnej komory obudowy}{11}{}%
-\contentsline {subsection}{\numberline {2.9.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{11}{}%
-\contentsline {subsection}{\numberline {2.10.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{12}{}%
-\contentsline {subsubsection}{\numberline {2.10.1.}\Large Slave}{12}{}%
-\contentsline {subsection}{\numberline {2.11.}\Large Testy poprawności działania algorytmu sterującego}{13}{}%
-\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{13}{}%
-\contentsline {subsection}{\numberline {3.1.}\Large Połączenie aplikacji z Arduino}{13}{}%
-\contentsline {subsection}{\numberline {3.2.}\Large Podłączenie laserowych czujników odległości}{13}{}%
-\contentsline {subsection}{\numberline {3.3.}\Large Montaż silników oraz kół}{13}{}%
-\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{13}{}%
+\contentsline {subsection}{\numberline {2.2.}\large Interfejs użytkownika aplikacji }{3}{}%
+\contentsline {subsection}{\numberline {2.3.}\Large Implementacja połączenia Bluetooth}{6}{}%
+\contentsline {subsection}{\numberline {2.4.}\Large Implementacja przesyłania danych}{7}{}%
+\contentsline {subsection}{\numberline {2.5.}\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }{8}{}%
+\contentsline {subsection}{\numberline {2.6.}\Large Proces wykonywania projektu obudowy robota}{10}{}%
+\contentsline {subsection}{\numberline {2.7.}\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}{14}{}%
+\contentsline {subsection}{\numberline {2.8.}\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}{15}{}%
+\contentsline {subsection}{\numberline {2.9.}\Large Montaż silników wewnątrz dolnej komory obudowy}{16}{}%
+\contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{16}{}%
+\contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{17}{}%
+\contentsline {subsubsection}{\numberline {2.11.1.}\Large Slave}{17}{}%
+\contentsline {subsection}{\numberline {2.12.}\Large Testy poprawności działania algorytmu sterującego}{18}{}%
+\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{18}{}%
+\contentsline {subsection}{\numberline {3.1.}\Large Połączenie aplikacji z Arduino}{18}{}%
+\contentsline {subsection}{\numberline {3.2.}\Large Podłączenie laserowych czujników odległości}{18}{}%
+\contentsline {subsection}{\numberline {3.3.}\Large Montaż silników oraz kół}{18}{}%
+\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{18}{}%

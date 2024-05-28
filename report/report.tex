@@ -111,9 +111,6 @@ Całość konstrukcji zostanie zamknięta w obudowie wykonanej techniką druku 3
 
 Początkowo plan realizacji projektu zakładał stworzenie aplikacji, która byłaby odpowiedzialna za zdalne sterowanie robotem poprzez moduł BLE (ang. Bluetooth Low Energy). W wyniku późniejszych konsultacji plan uległ zmianie jednak aplikacja zostanie wykorzystana jako wsparcie dla automatycznego trybu robota.
 
-% \subsection{\Large Harmonogram realizacji projektu}
-% \subsubsection{\large Okres 1}
-% Wykonanie projektu obuydowy robota. Wykonanie bazy aplikacji mobilnej w celu 
 
 \section{\LARGE Realizacja projektu}
 Projekt był realizowany etapami, jednak nie został zastosowany szczegółowy harmonogram. 
@@ -137,13 +134,71 @@ Przez wzgląd na wcześniej nabyte umijętności tworzenia aplikacji za pomocą 
 
 Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poniższym raporcie szczegółowo omówiona. Zostanie przedstawiony podstawowy interfejs graficzny oraz zasada działania kluczowych funkcji, takich jak połączenie lub realizacja przesyłu danych. Autor uważa, iż pewne wyszczególnienie części metod oraz zastosowanych bibliotek może pomóc niektórym osobom w prostrzym znalezieniu informacji na temat poprawnie działającego połączenia z mikrokontrolerem Arduino poprzez Bluetooth.
 
-\subsubsection{\large Interfejs użytkownika aplikacji }
+\subsection{\large Interfejs użytkownika aplikacji }
 % --------------------------------------------------------
 % Autor: Jakub Pajak
+%
 % TODO: Opisać Interfejs użytkownika oraz co robią poszczególne funkcje, jak działa aplikacja na poziomie ideowym
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
+
+Interfejs użytkownika został zaprojektowany w celu umożliwienia podstawowej kontroli nad robotem. Z tego względu, nie poświęcono mu znacznej ilości czasu na poprawę estetyki.
+
+Po uruchomieniu aplikacji, użytkownik trafia na ekran początkowy (ang. Home), przedstawiony na Rysunku \ref{fig:home_screen}. Ekran ten zawiera cztery wyróżnione obszary, każdy z których pełni określoną funkcję. Pierwsza sekcja ma na celu wprowadzenie nowego użytkownika w sposób bezpiecznego i poprawnego korzystania oraz sterowania robotem.
+
+Druga sekcja prowadzi do ustawień wyglądu aplikacji, gdzie użytkownik może dostosować kolorystykę i inne elementy graficzne interfejsu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/app/home.jpg}
+    \caption{Ekran początkowy aplikacji}
+    \label{fig:home_screen}
+\end{figure}
+
+Trzecia i czwarta sekcja dotyczą genezy projektu oraz zespołu, który stworzył robota i aplikację. Ponadto, umożliwiają one użytkownikom przesyłanie opinii, co pozwala na wprowadzenie przyszłych aktualizacji mających na celu poprawę jakości korzystania z aplikacji.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/app/home-2.jpg}
+    \caption{Obraz prezentujący ekran początkowy aplikacji}
+    \label{fig:home_screen-2}
+\end{figure}
+
+W lewym górnym rogu ekranu znajduje się standardowy dla aplikacji mobilnych przycisk rozwijający menu boczne. Menu zawiera wszystkie niezbędne zakładki, takie jak:
+\begin{itemize}
+\item \textit{Control Panel} (Panel Kontrolny) – umożliwia sterowanie robotem,
+\item \textit{Connect to device} (Połącz z urządzeniem) – pozwala na wyszukiwanie i łączenie z urządzeniem,
+\item \textit{Settings} (Ustawienia) – umożliwia dostosowanie parametrów robota,
+\item \textit{Help} (Pomoc) – zawiera informacje o korzystaniu z aplikacji oraz dane kontaktowe działu wsparcia.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/app/tab-control.jpg}
+    \caption{Menu boczne aplikacji}
+    \label{fig:side-menu}
+\end{figure}
+
+Po kliknięciu w pierwszą zakładkę użytkownik zostaje przekierowany do strony odpowiedzialnej za sterowanie robotem. Ekran ten podzielony jest na dwie sekcje. Pierwsza z nich, zatytułowana \textit{Controls} (Kontrolki), umożliwia bezpośrednie sterowanie robotem poprzez odpowiednie przyciski. Po prawej stronie znajduje się sekcja, która w przyszłości ma wyświetlać animację przedstawiającą robota w ruchu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/app/control.jpg}
+    \caption{Ekran kontroli robota}
+    \label{fig:control}
+\end{figure}
+
+Kolejną zakładką jest ekran wyświetlający dostępne urządzenia Bluetooth. Użytkownik może połączyć aplikację z wybranym urządzeniem poprzez naciśnięcie przycisku \textit{Connect} (Połącz). Zaleca się łączenie wyłącznie z urządzeniami będącymi częścią systemu robota.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/app/list-devices.jpg}
+    \caption{Ekran połączenia z urządzeniami}
+    \label{fig:Connect}
+\end{figure}
+
+Zakładki takie jak \textit{Settings} (Ustawienia) i \textit{Help} (Pomoc) nie zostały zaimplementowane z powodu zmiany priorytetów podczas rozwoju projektu. Niemniej jednak, aplikacja ma duży potencjał rozwoju i może zostać rozbudowana w przyszłości.
 
 \subsection{\Large Implementacja połączenia Bluetooth}
 % --------------------------------------------------------
@@ -151,8 +206,38 @@ Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poni�
 %
 % TODO: Opisać zasadę działania połączenia Bluetooth poprzez paczkę flutter_blue
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
+
+Kluczową informacją potrzebną do nawiązania połączenia z mikrokontrolerem Arduino UNO R4 jest fakt, iż mikrokontroler ten korzysta ze specyficznego rodzaju Bluetooth - Bluetooth Low Energy (BLE). W związku z tym konieczne było wykorzystanie odpowiedniej biblioteki, takiej jak \textit{flutter\_blue}. Bibliotekę tę można pobrać za pomocą narzędzia w terminalu, wpisując komendę:
+\begin{verbatim}
+flutter pub add flutter_blue
+\end{verbatim}
+Drugą istotną kwestią jest konieczność wykorzystania fizycznego urządzenia do uruchamiania aplikacji. Jest to zalecane ze względu na brak możliwości wyszukiwania urządzeń Bluetooth w niektórych emulatorach.
+
+
+Pierwszym krokiem do nawiązania połączenia jest wyświetlenie listy wszystkich dostępnych urządzeń Bluetooth. W tym celu wykonywana jest funkcja \texttt{\_startScan()}, której zadaniem jest pobranie wszystkich dostępnych urządzeń i dodanie ich do listy w celu późniejszego wyświetlenia.
+
+Funkcja \texttt{\_getPairedDevices()} zwraca wszystkie urządzenia, które zostały pomyślnie sparowane.
+
+Po zakończeniu skanowania, proces jest zamykany przy pomocy funkcji \texttt{\_stopScan()}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{src/app/_getPairedDeviced.png}
+    \caption{Fragment kodu źródłowego zawierający implementację wyszukiwania dostępnych urządzeń}
+    \label{fig:con-list}
+\end{figure}
+
+Kolejnym krokiem jest nawiązanie połączenia z wybranym urządzeniem. Proces ten jest realizowany przez funkcję \texttt{\_connectToDevice()}, która jako parametr przyjmuje referencję do wybranego urządzenia z listy. Funkcja ta wywołuje metodę kończącą skanowanie, a następnie na instancji klasy \texttt{BluetoothDevice} wywołuje metodę \texttt{connect()}, która realizuje połączenie. Klasa \texttt{BluetoothDevice} jest dostępna dzięki użyciu biblioteki \texttt{flutter\_blue}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{src/app/connect.png}
+    \caption{Fragment kodu źródłowego zawierający implementację nawiązywania połączenia BLE}
+    \label{fig:con-soft}
+\end{figure}
+
 
 \subsection{\Large Implementacja przesyłania danych}
 % --------------------------------------------------------
@@ -160,8 +245,25 @@ Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poni�
 %
 % TODO: Opisać sposób przekazywania infomracji o przyciśniętym przycisku w postaci całkowitoliczbowej
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
+
+Proces przesyłania informacji do urządzenia Bluetooth opiera się na metodzie \texttt{sendValueToArduino()}. Ta metoda przyjmuje dwa parametry: referencję do połączonego urządzenia oraz wartość, która ma zostać przesłana.
+
+Pierwszym krokiem w tej metodzie jest weryfikacja, czy urządzenie zostało poprawnie połączone oraz czy jest możliwe przesłanie danych. W przypadku niepowodzenia tej weryfikacji, w konsoli zostaje wyświetlona stosowna informacja diagnostyczna, co pozwala na szybkie zidentyfikowanie problemu.
+
+Następnie metoda wyszukuje urządzenia o konkretnej charakterystyce, która jest niezbędna do prawidłowego funkcjonowania połączenia. Znalezienie urządzenia o odpowiedniej charakterystyce jest kluczowe, ponieważ zapewnia, że dane zostaną przesłane do właściwego odbiorcy.
+
+Jeśli charakterystyka urządzenia zgadza się z oczekiwaną, wartość jest przesyłana. Taki proces zapewnia nie tylko prawidłowość przesyłania danych, ale również bezpieczeństwo połączenia.
+
+Poniżej znajduje się fragment kodu źródłowego, który ilustruje implementację logiki przesyłania informacji do urządzenia.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{src/app/send.png}
+\caption{Fragment kodu źródłowego zawierający implementację logiki przesyłania informacji do urządzenia}
+\label{fig:send-val}
+\end{figure}
 
 
 \subsection{\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }
@@ -338,7 +440,7 @@ Do weryfikacji działania silników można zakomentować pozostałe ustawienia s
 %
 % TODO: Opisać sposób podłączenia czujników oraz kod weryfikujący podłączenie
 %
-% Status: 80% done
+% Status: 100% done
 % --------------------------------------------------------
 We wczesnej fazie planowania zakładano wykorzystanie ultradźwiękowych czujników odległości. Pomysł ten okazał się nietrafiony ze względu na sposób przekazywania danych przez te czujniki. Każdy czujnik posiada dwa wyprowadzenia, co przy użyciu ośmiu czujników wymagałoby wykorzystania co najmniej 16 pinów Arduino.
 
