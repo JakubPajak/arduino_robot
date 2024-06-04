@@ -7,7 +7,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1.}\Large  Cel projektu}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.}\Large  Założenia wstępne}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.}\LARGE  Realizacja projektu}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.}\Large  Panel sterowania w aplikacji}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.}\Large  Panel sterowania w aplikacji}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.}\large  Interfejs użytkownika aplikacji }{3}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Ekran początkowy aplikacji}}{3}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -41,7 +41,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Wizualizacja gotowego modelu w programie AutoDesk Fusion.}}{11}{}\protected@file@percent }
 \newlabel{fig:bt_con_arduino}{{13}{11}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Widok rzutu górnego na pierwsze piętro modelu. Znajdują się w nim silniki kątowe z przekładnią oraz miejsce na ogniwa zasilające wraz z BMS.}}{12}{}\protected@file@percent }
-\newlabel{fig:zdjecie1}{{14}{12}{}{}{}}
+\newlabel{fig:zdjecie1-robo}{{14}{12}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Widok rzutu bocznego na pierwsze piętro modelu.}}{12}{}\protected@file@percent }
 \newlabel{fig:zdjecie2}{{15}{12}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Widok rzutu górnego na drugie piętro modelu. Znajdują się w nim dwa mikronotrolery Arduino UNO oraz płytka stykowa.}}{12}{}\protected@file@percent }
@@ -65,17 +65,22 @@
 \newlabel{fig:listwa-kola}{{23}{16}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.10.}\Large  Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{16}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.11.}\Large  Integracja czujników z silnikami oraz implementacja logiki sterowania}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.11.1.}\Large  Slave}{17}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Fragment kodu źródłowego przedstawiający odbiór komunikatów przesyłanych przez mikrokontroler Master.}}{17}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{24}{17}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}}{17}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{25}{17}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Wizualizacja zależności kierunku jazdy od obrotu kół szwedzkich.}}{18}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{26}{18}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.12.}\Large  Testy poprawności działania algorytmu sterującego}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.}\LARGE  Napotkane problemy}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.}\Large  Połączenie aplikacji z Arduino}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.}\Large  Podłączenie laserowych czujników odległości}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.}\Large  Montaż silników oraz kół}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.}\LARGE  Podsumowanie}{18}{}\protected@file@percent }
-\gdef \@abspage@last{19}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.11.1.}\large  Master}{17}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Kod źródłowy realizujący wyszukiwanie urządzeń dostępnych na magistrali I2C}}{18}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Kod źródłowy realizujący odczytywanie odległości z czujnika}}{19}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Kod źródłowy realizujący wyznaczenie odpowiedniego sterowania}}{20}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Kod źródłowy realizujący wysłanie instrukcji sterowania}}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.11.2.}\Large  Slave}{21}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Fragment kodu źródłowego przedstawiający odbiór komunikatów przesyłanych przez mikrokontroler Master.}}{21}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{28}{21}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}}{22}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{29}{22}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Wizualizacja zależności kierunku jazdy od obrotu kół szwedzkich.}}{22}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{30}{22}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.12.}\Large  Testy poprawności działania algorytmu sterującego}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.}\LARGE  Napotkane problemy}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.}\Large  Podłączenie laserowych czujników odległości}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.}\Large  Montaż silników oraz kół}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.}\Large  Implementacja logiki sterowania}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.}\LARGE  Podsumowanie}{23}{}\protected@file@percent }
+\gdef \@abspage@last{24}

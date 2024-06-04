@@ -219,32 +219,29 @@ void readFromSensor() {
 int processSensorInfo() {
   unsigned long currentTime = millis();
 
-  // Tryb normalny
+  // Normal mode
   if (!wneka) {
-    // Jeśli robot znajduje się w otwartej przestrzeni, porusza się w prawo
+    // If the robot is in an open space, it moves to the right
     if ((dist_array[4] > SAFE_DIST && dist_array[4] > SAFE_DIST) && 
         (dist_array[2] > SAFE_DIST && dist_array[1] > SAFE_DIST)) {
       Serial.println("ENGINES TO RIGHT");
       current_direction = CURRENT_DIR::MOVE_RIGHT;
       return CURRENT_DIR::MOVE_RIGHT;
     }
-
-    // Jeśli robot napotyka przeszkodę z przodu, wchodzi w tryb wnęki
+    // If the robot encounters an obstacle in front, it enters recess mode
     if ((dist_array[4] <= SAFE_DIST) || (dist_array[3] <= SAFE_DIST)) {
       current_direction = CURRENT_DIR::MOVE_LEFT;
       Serial.println("ENGINES TO LEFT");
       wneka = true;
       return CURRENT_DIR::MOVE_LEFT;
     }
-
-    // Jeśli przed robotem nie ma przeszkód, porusza się do przodu
+    // If there are no obstacles in front of the robot, it moves forward
     if (dist_array[4] > SAFE_DIST && dist_array[3] > SAFE_DIST) {
       Serial.println("ENGINES FORWARD");
       current_direction = CURRENT_DIR::MOVE_FORWARD;
       return CURRENT_DIR::MOVE_FORWARD;
     }
-
-    // Jeśli odległość od ściany jest większa niż bezpieczna, porusza się w prawo
+    // If the distance from the wall is greater than the safe distance, it moves to the right
     if ((current_direction != CURRENT_DIR::MOVE_LEFT) && dist_array[2] > SAFE_DIST && dist_array[1] > SAFE_DIST) {
       Serial.println("ENGINES TO RIGHT");
       current_direction = CURRENT_DIR::MOVE_RIGHT;
@@ -252,16 +249,15 @@ int processSensorInfo() {
     }
   }
 
-  // Tryb wnęki
+  // Alcove mode
   if (wneka) {
-    // Jeśli przed robotem jest przeszkoda, kontynuuje ruch w lewo
+    // If there is an obstacle in front of the robot, it continues to move to the left
     if ((dist_array[4] <= SAFE_DIST) || (dist_array[3] <= SAFE_DIST)) {
       Serial.println("ENGINES TO LEFT - WNEKA");
       current_direction = CURRENT_DIR::MOVE_LEFT;
       return CURRENT_DIR::MOVE_LEFT;
     }
-
-    // Warunek wyjechania z wnęki - jeśli robot ma bezpieczną odległość z przodu i z boku
+    // The condition of leaving the recess - if the robot has a safe distance in front and on the side
     if(!exitingAlcove && dist_array[4] > SAFE_DIST && dist_array[3] > SAFE_DIST) {
       Serial.println("EXITING ALCOVE, SWITCHING TO FORWARD MODE");
       exitingAlcove = true;
@@ -271,7 +267,7 @@ int processSensorInfo() {
     }
   }
 
-  // Po wyjechaniu z wnęki, jedź prosto przez określony czas
+  //After leaving the alcove, drive straight for a certain amount of time
   if (exitingAlcove) {
     if (currentTime - alcoveExitTime < FORWARD_TIME_AFTER_ALCOVE) {
       Serial.println("ENGINES FORWARD AFTER ALCOVE");

@@ -103,13 +103,13 @@
 Celem niniejszego projektu jest opracowanie mobilnej platformy robotycznej, zdolnej do automatycznego utrzymywania określonej odległości od ściany. Platforma ta bazować będzie na mikrokontrolerze Arduino oraz laserowych czujnikach odległości typu ToF (ang. Time of Flight). Projekt ma na celu zbadanie i rozwinięcie zaawansowanych algorytmów sterowania i nawigacji, które umożliwią precyzyjne śledzenie ścian w zmiennych warunkach środowiskowych. Dodatkowym celem jest stworzenie wszechstronnego rozwiązania, które można łatwo dostosować do różnych zastosowań, takich jak roboty sprzątające, inspekcyjne czy systemy autonomiczne w logistyce.
 
 \subsection{\Large Założenia wstępne}
-Robot zostanie zaprojektowany w oparciu o mikrokontroler Arduino Uno R4, wybrany ze względu na wbudowany moduł Bluetooth LE (LE - Low Energy), co umożliwi zdalne monitorowanie i kontrolę. Silniki zastosowane w projekcie muszą być wyposażone w enkodery, bądź umożliwiać ich dołączenie, co zapewni precyzyjne sterowanie. Czujniki odległości zostaną podłączone do mikrokontrolera za pomocą magistrali I2C. Ze względu na planowaną liczbę czujników (osiem), połączenie ich innymi metodami nie byłoby efektywne.
+Robot został zaprojektowany w oparciu o mikrokontroler Arduino Uno R4, wybrany ze względu na wbudowany moduł Bluetooth LE (LE - Low Energy), co umożliwiło zdalne monitorowanie i kontrolę. Silniki zastosowane w projekcie są wyposażone w enkodery, co zapewni precyzyjne sterowanie. Czujniki odległości zostały podłączone do mikrokontrolera za pomocą magistrali I2C. Ze względu na planowaną liczbę czujników (osiem), połączenie ich innymi metodami nie byłoby możliwe.
 
-Zasilanie platformy musi być wystarczające do obsługi co najmniej jednego mikrokontrolera oraz czterech silników. Optymalnym rozwiązaniem będzie zastosowanie czterech ogniw litowo-jonowych połączonych w konfiguracji 2S2P, co zapewni odpowiednią wydajność energetyczną. Dodatkowo, konieczne jest zastosowanie układu zarządzania baterią BMS (ang. Battery Management System), który zabezpieczy ogniwa przed nadmiernym rozładowaniem i przeładowaniem.
+Zasilanie platformy jest wystarczające do obsługi co najmniej jednego mikrokontrolera oraz czterech silników. Optymalnym rozwiązaniem jest zastosowanie czterech ogniw litowo-jonowych połączonych w konfiguracji 2S2P, co zapewni odpowiednią wydajność energetyczną. Dodatkowo, konieczne jest zastosowanie układu zarządzania baterią BMS (ang. Battery Management System), który zabezpieczy ogniwa przed nadmiernym rozładowaniem i przeładowaniem.
 
-Całość konstrukcji zostanie zamknięta w obudowie wykonanej techniką druku 3D. Obudowa będzie podzielona na dwie główne sekcje: dolną, w której zostaną umieszczone silniki oraz ogniwa wraz z układem BMS, oraz górną, zawierającą płytkę stykową, mikrokontroler oraz czujniki. Taka konstrukcja zapewni łatwy dostęp do kluczowych komponentów i umożliwi ich sprawną wymianę w razie potrzeby.
+Całość konstrukcji została zamknięta w obudowie wykonanej techniką druku 3D. Obudowa jest podzielona na dwie główne sekcje: dolną, w której zostaną umieszczone silniki oraz ogniwa wraz z układem BMS, oraz górną, zawierającą płytkę stykową, mikrokontroler oraz czujniki. Taka konstrukcja zapewnia łatwy dostęp do kluczowych komponentów i umożliwi ich sprawną wymianę w razie potrzeby.
 
-Początkowo plan realizacji projektu zakładał stworzenie aplikacji, która byłaby odpowiedzialna za zdalne sterowanie robotem poprzez moduł BLE (ang. Bluetooth Low Energy). W wyniku późniejszych konsultacji plan uległ zmianie jednak aplikacja zostanie wykorzystana jako wsparcie dla automatycznego trybu robota.
+% Początkowo plan realizacji projektu zakładał stworzenie aplikacji, która byłaby odpowiedzialna za zdalne sterowanie robotem poprzez moduł BLE (ang. Bluetooth Low Energy). W wyniku późniejszych konsultacji plan uległ zmianie jednak aplikacja zostanie wykorzystana jako wsparcie dla automatycznego trybu robota.
 
 
 \section{\LARGE Realizacja projektu}
@@ -344,14 +344,14 @@ Wszystkie istotne kable zostały przeprowadzone przez specjalnie przygotowany ot
     \centering
     \begin{minipage}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{"src/Robot_pics/Dol.png"}
+        \includegraphics[width=\textwidth]{src/Robot_pics/Dol.png}
         \caption{Widok rzutu górnego na pierwsze piętro modelu. Znajdują się w nim silniki kątowe z przekładnią oraz miejsce na ogniwa zasilające wraz z BMS.}
-        \label{fig:zdjecie1}
+        \label{fig:zdjecie1-robo}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{"src/Robot_pics/Dol 1.png"}
+        \includegraphics[width=\textwidth]{src/Robot_pics/Dol 1.png}
         \caption{Widok rzutu bocznego na pierwsze piętro modelu.}
         \label{fig:zdjecie2}
     \end{minipage}
@@ -495,7 +495,6 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 
 \newpage
 \subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}
-
 % --------------------------------------------------------
 % Autor: Jakub Pająk && Łukasz Grabarski
 %
@@ -504,9 +503,86 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 % Status: Łukasz 50% (jeszcze coś dopiszę)
 % --------------------------------------------------------
 
+W celu osiągnięcia optymalnej integracji modułu czujników oraz modułu sterowania silnikami zastosowano strukturę opartą na magistrali I2C. W omawianym układzie wykorzystano architekturę typu Master-Slave. Moduł odczytu danych z czujników oraz moduł odpowiedzialny za sterowanie silnikami są realizowane przez dwa oddzielne mikrokontrolery Arduino UNO. Mikrokontroler odpowiedzialny za odczyt wartości z czujników pełni rolę Master, przetwarzając informacje uzyskane z czujników i na ich podstawie przesyłając sygnały sterujące do mikrokontrolera pełniącego rolę Slave.
+
+Zastosowanie tej specyficznej architektury było niezbędne z uwagi na ograniczenia w dostępności pinów GPIO. Wykorzystanie czterokanałowego sterownika silników w formie nakładki na mikrokontroler Arduino spowodowało zmniejszenie liczby dostępnych pinów do pinów analogowych o adresach od A0 do A5. Jak wspomniano w sekcji 2.8, wykorzystanie kilku czujników wymaga dostosowania ich adresów. W związku z tym konieczne było uzyskanie dostępu do co najmniej siedmiu pinów ogólnego przeznaczenia I/O, co zapewnia drugie Arduino pełniące rolę Master.
+
+\subsubsection{\large Master}
+
+Kod źródłowy rozpoczyna się od deklaracji oraz inicjalizacji zmiennych oraz stałych globalnych. Są to między innymi adresy czujników, typ wyliczeniowy zawierający informacje o aktualnej trajektorii robota oraz adresy pinów do których zostaną podłączone piny XSHUT. 
+
+Następnie w funkcji \texttt{setup()} wykonywana jest inicjalizacja czujników. Proces inicjalizacji rozpoczyna się od ustawienia odpowiedniego adresu dla każdego czujnika. Proces ten został opisany wcześniej. Kolejnym etapem jest właściwa inicjalizacja czujnika. Wykonywana jest ona za pomocą funkcji \texttt{init()} wywoływanej na każdej instancji obiektu czujnika. W przypadku błędnej inicjalizacji wyświetlany jest stosowny komunikat. Następnie dla każdego czujnika ustawiany jest czas maksymalnego oczekiwania na wartość (ang. timeout) za pomocą funkcji \texttt{setTimeout()}. Jest on ustawiony na wartość 500ms, zatem po tym czasie zostanie zwrócona wartość maksymalna dla typu UINT16. Ostanim zadaniem jest przełączenia czujnika w tryb odczytu ciągłęgo za pomocą funkcji \texttt{setContinuous()}.
+
+
+Następna funkcja typowa dla środowiska Arduino IDE to \texttt{setup()}. Funkcja ta zawiera wywołania czterech dodatkowych funkcji:
+\begin{itemize}
+    \item \texttt{searchForDevices()} - odpowiada za wyszukiwanie dostępnych urządzeń na magistrali I2C,
+    \item \texttt{readFromSensor()} - odpowiada za odczytanie wartości z czujników,
+    \item \texttt{processSensorInfo()} - odpowiada za interpretację otrzymanych wyników,
+    \item \texttt{sendSteering()} - odpowiada za przesłanie instrukcji sterowania do urządzenia Slave.
+\end{itemize}
+
+\subsubsection*{Funkcja \texttt{searchForDevices()}}
+
+Funkcja ta jest funkcją pomocniczą, niekonieczną do poprawnego działania programu. Jest ona jedna przydatna w celu weryfikacji poprawności połączenia urządzeń do magistrali I2C. W przypadku braku dostępnych urządzeń lub braku zgodności ich liczby należy zwrócić uwagę, czy wszystkie urządzenia są poprawnie podłączone do zasilania oraz do magistrali. Jeśli pierwsze w kolejności urządzenie podłączone do magistrali jest wadliwe lub zostało niepoprawnie podłączone, żadne kolejne urządzenie nie zostanie wykryte. 
+
+
+Realizacja wyszukiwania dostępnych urządzeń (adresów) jest relatywnie prosta. W pętli \texttt{for} poprzez wywołanie funckji \texttt{Wire.beginTransmission(int addr)} rozpoczynana jest próbna transmisja do potencjalnego urządzenia. Jeśli urzadzenie odpowie bez błędu, jego adres jest wyświelany w konsoli w postaci liczby w formacie szesnastkowym.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/code_snaps/searchDevices.png}
+    \caption{Kod źródłowy realizujący wyszukiwanie urządzeń dostępnych na magistrali I2C}
+\end{figure}
+
+\subsubsection*{Funkcja \texttt{readFromSensor()}}
+
+Implementacja funkcji czytania wartości z sensora jest bardzo prosrtolinijna. Za pomocą matody \texttt{readRangeContinuousMillimeters()} wywołanej na odpowiednim obiekcie klasy VL53L0X odczytywana jest wartość odległości wyrażona w milimetrach. Jednocześnie odczytana wartość jest przypisywana do odpowiedniej komórki w tablicy pomiarów. 
+
+We fragmencie kodu źródłowego można zauważyć wykomentowany fragment wyświelający wartość odległości. Został on wykorzystany w celu walidacji danych odczytywanych z czujników.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/code_snaps/readFromSensor.png}
+    \caption{Kod źródłowy realizujący odczytywanie odległości z czujnika}
+\end{figure}
+
+\subsubsection*{Funkcja \texttt{processSensorInfo()}}
+
+Powyższa funkcja ma wagę fundamentalną pod kątem poprawności działania robota. Jednocześnie funkcja ta jest najbardziej złożona, przez co zostanie dodany cały kod źródłowy. 
+
+Funkcja rozpoczyna się od inicjalizacji zmiennej \texttt{currentTime()}, jej sens wyjaśni się w miarę zgłębiania logiki wyznacznaia sterowania. 
+
+Pierwsza instrukcja warunkowa sprawdza czy robot znajduje się we wnęce. Stan domyślny jest ustawniony na \texttt{false}. Następnie, zgodnie z dodanymi komentarzami, jeśli przed robotem oraz z prawej strony strony odległość jest większa niż stała \texttt{SAFE\_DIST}, wtedy robot dojedzie do ściany. Funkcja zwraca wartość na podstawie typu wyliczeniowego nadmienionego wcześniej. Dodatkowo w celach pomocniczych wyświetlany jest komunikat o aktualnej trajektorii. 
+
+Następne instrukcje warunkowe realizują sterowanie zgodnie z komentarzami. Warto zwrócić uwagę na instrukcję warunkową rozpoczynającą się w linii 15. Jeśli robot wykryje ścianę przed sobą, robot rozpoczyna ruch w lewo oraz przełącza flagę \texttt{wneka} na wartość \texttt{true}.
+
+Jeśli została wykryta wnęka wykonuje się alternatywna sekwencja instrukcji warunkowych. Jeśli przed robotem ciągle znaduje się przeszkoda, jego ruch pozostaje niezmienny w lewo. W przypadku, gdy czujniki wykryją wolną przestrzeń, włączany jest tryb wyjeżdzania z wnęki. 
+
+Opuszczanie wnęki zostało zrealizowane za pomocą licznika, stąd deklaracja zmiennej \texttt{currentTime} na początku funkcji. W linii nr 55 sprawdzany jest warunek, czy czas przeznaczony na wyjazd z wnęki minął. Jeśli tak, pojazd przełącza się w tryb normalny, jeśli nie, pojazd kontunuuje jazdę prosto. 
+
+Wyjaśnienie wykorzystania takiej struktury zostanie opisane w sekcji 3.3. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/code_snaps/processInfo.png}
+    \caption{Kod źródłowy realizujący wyznaczenie odpowiedniego sterowania}
+\end{figure}
+
+\newpage
+
+\subsubsection*{Funkcja \texttt{sendSteering()}}
+
+Funkcja ta realizuje wysyłanie wartości odczytanej z funkcji prezetwarzającej dane z sensorów. Pierwszym krokiem jest rozpoczęcie transmisji z urządzeniem o adresie \texttt{0x09} - taki adres jest typowo przydzielany dla drugiego mikrokontrolera Arduino. Następnie za pomocą funkcji \texttt{Wire.write()} odbywa się włąściwy przesył danych poprzez magistralę I2C.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{src/code_snaps/sendSteer.png}
+    \caption{Kod źródłowy realizujący wysłanie instrukcji sterowania}
+\end{figure}
+
 \subsubsection{\Large Slave}
 
-Mikrokontroler Arduino UNO 3 skonfigurowany do pracy typu Slave odbiera paczkę danych przez zmienną "rd" wysyłane przez Master.
+Mikrokontroler Arduino UNO R3 skonfigurowany do pracy typu Slave odbiera paczkę danych przez zmienną "rd" wysyłane przez Master.
 
 \begin{figure}[H]
     \centering
@@ -523,8 +599,6 @@ Zgodnie z odbieranym komunikatami o zmianie kierunku indeksowanymi od 0 do 3, pr
     \caption{Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}
     \label{fig:sensor_init}
 \end{figure}
-
-\newpage
 
 Funkcje określające kierunek jazdy zostały skonstruowane wedle logiki i geometrii działania kół szwedzkich.
 
@@ -546,24 +620,22 @@ Funkcje określające kierunek jazdy zostały skonstruowane wedle logiki i geome
 % --------------------------------------------------------
 
 \section{\LARGE Napotkane problemy}
-\subsection{\Large Połączenie aplikacji z Arduino}
-% --------------------------------------------------------
-% Autor: Jakub Pająk
-%
-% TODO: Opisać problemy napotkane podczas tworzenia aplikacji 
-%
-% Status: 
-% --------------------------------------------------------
-
 \subsection{\Large Podłączenie laserowych czujników odległości}
 % --------------------------------------------------------
 % Autor: Jakub Pająk
 %
 % TODO: Opisać problemy podczas podłączenia czujników laserowych
 %
-% Status: 
+% Status: 100%
 % --------------------------------------------------------
 
+Problematyczne okazało się użytkowanie więcej niż jednego czujnika laserowego przy wykorzystaniu magistrali I2C. Było to spowodowane domyślnytm adresem, który był taki sam dla wszystkich czujników. 
+
+Naturalnym krokiem jest wykorzystanie funkcji \texttt{setAddress()}, ustawiającej inny niż domyślny adres dla czujnika. Niestety wykorzystanie tylko tej funkcji nie przyniosło oczekiwanych rezultatów, w wyniku czego należało szukać rozwiązania dalej. 
+
+Na podstawie dokumentacji oraz informacji znalezionych na forach internetowych, okazało się, że aby z sukcesem zmienić adres czujnika należy wykorzystać dodatkowy pin o nazwie XSHUT. Dzięki niemu czujnik zapamiętywał zmianę adresu i możliwe było wykorzystanie zamierzonej liczby sensorów. 
+
+Dokładny sposób podłączenia czujników oraz wykorzystania pinu XSHUT został opisany w sekcji nr 2.8.
 
 \subsection{\Large Montaż silników oraz kół}
 % --------------------------------------------------------
@@ -578,6 +650,14 @@ Pierwszym problemem było zamontowanie samych silników. Okazało się, że dziu
 Kolejnym wyzwaniem było mocowanie kół do silników. Początkowo używaliśmy długich śrub do przymocowania kół, jednak okazało się, że koła były bardzo niestabilnie zamocowane i miały spore luzy. Aby wyeliminować te luzy, wprowadziliśmy boczne listwy aluminiowe, przez które przechodzą długie gwintowane szprychy. To rozwiązanie znacznie poprawiło stabilność kół i zminimalizowało luzy, zapewniając lepsze działanie całego układu.
 
 Dzięki tym działaniom udało się rozwiązać napotkane problemy i zakończyć montaż kół i silników w sposób zapewniający solidność i niezawodność konstrukcji.
+
+\subsection{\Large Implementacja logiki sterowania}
+Realizacja logiki realizującej śledzenie ściany bez elementu opuszczania wnęki była realtywnie prosta. Jednak dodanie sekwencji wyjeżdżania z wnęki okazało się wyzwaniem.
+
+Było tak ze względu na kolejność instrukcji warunkowych. Pierwotnie jeśli robot dojeżdzał do ściany jednocześnie mając z prawej swojej strony przeszkodę, poprawnie rozpoczynał ruch w lewo. Jednak po otrzymaniu informacji z sensora o pustej przestrzeni przed, robot od razu rozpoczynał ruch w prawo, ze względu na oddalenie się od prawej strony ściany. W wyniku czego pojazd jeździł tam i z powrotem w kółko. 
+
+Rozwiązaniem okazało się zastosowanie dodatkowego warunku sprawdzającego stan flagi \texttt{wneka} oraz wykorzystanie wymuszonego ruchu do przodu - opisany wcześniej licznik. Dzięki wykorzystaniu wymienionych ulepszeń, robot zarejetrowaniu pustej przestrzeni przed sobą, przez określony czas poruszał się przed siebie, w wyniku czego przynajmniej jeden z czujników z jego prawej strony otrzymywał owartość uniemożliwiającą ruch w prawo. 
+
 
 \section{\LARGE Podsumowanie}
 % --------------------------------------------------------

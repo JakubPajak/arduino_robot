@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {1.1.}\Large Cel projektu}{2}{}%
 \contentsline {subsection}{\numberline {1.2.}\Large Założenia wstępne}{2}{}%
 \contentsline {section}{\numberline {2.}\LARGE Realizacja projektu}{2}{}%
-\contentsline {subsection}{\numberline {2.1.}\Large Panel sterowania w aplikacji}{3}{}%
+\contentsline {subsection}{\numberline {2.1.}\Large Panel sterowania w aplikacji}{2}{}%
 \contentsline {subsection}{\numberline {2.2.}\large Interfejs użytkownika aplikacji }{3}{}%
 \contentsline {subsection}{\numberline {2.3.}\Large Implementacja połączenia Bluetooth}{6}{}%
 \contentsline {subsection}{\numberline {2.4.}\Large Implementacja przesyłania danych}{7}{}%
@@ -14,10 +14,11 @@
 \contentsline {subsection}{\numberline {2.9.}\Large Montaż silników wewnątrz dolnej komory obudowy}{16}{}%
 \contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{16}{}%
 \contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{17}{}%
-\contentsline {subsubsection}{\numberline {2.11.1.}\Large Slave}{17}{}%
-\contentsline {subsection}{\numberline {2.12.}\Large Testy poprawności działania algorytmu sterującego}{18}{}%
-\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{18}{}%
-\contentsline {subsection}{\numberline {3.1.}\Large Połączenie aplikacji z Arduino}{18}{}%
-\contentsline {subsection}{\numberline {3.2.}\Large Podłączenie laserowych czujników odległości}{18}{}%
-\contentsline {subsection}{\numberline {3.3.}\Large Montaż silników oraz kół}{18}{}%
-\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{18}{}%
+\contentsline {subsubsection}{\numberline {2.11.1.}\large Master}{17}{}%
+\contentsline {subsubsection}{\numberline {2.11.2.}\Large Slave}{21}{}%
+\contentsline {subsection}{\numberline {2.12.}\Large Testy poprawności działania algorytmu sterującego}{22}{}%
+\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{22}{}%
+\contentsline {subsection}{\numberline {3.1.}\Large Podłączenie laserowych czujników odległości}{22}{}%
+\contentsline {subsection}{\numberline {3.2.}\Large Montaż silników oraz kół}{22}{}%
+\contentsline {subsection}{\numberline {3.3.}\Large Implementacja logiki sterowania}{23}{}%
+\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{23}{}%
