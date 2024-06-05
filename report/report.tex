@@ -9,6 +9,8 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{array}
+\usepackage{enumitem}
 
 \geometry{
     a4paper,
@@ -492,6 +494,126 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 %
 % Status: 
 % --------------------------------------------------------
+
+
+\subsubsection{\large Obliczanie parametrów zasilania}
+
+Robot AGV korzysta z czterech silników kątowych z przekładnią SJ02. Każdy silnik sterowany jest z nakładki na zestaw Arduino L293D Motor Driver Board. Moduł ten pozwala na regulowanie prędkości obrotowej i kierunku czterech silników prądu stałego o prądzie do $I_n=600 mA$ i napięciem do $U_n=36 V$, zasilanie silników zaleca się poprowadzić przez kanał odseparowany od linii zasilania z USB. Sam moduł musi być zasilany napięciem 4,5 do 16 V, w przypadku napięcia wyższego niż 12 V, zaleca się zasilać osobno moduł i Arduino zdejmując zworkę PWR\_IMP. Specyfikację L293D Motor Driver Board przedstawiono na rysunku \ref{fig:motor-driver-spec}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{src/tech_specifications/L293D Motor Driver Board.png}
+    \caption{Specyfikacja modułu L293D Motor Driver Board. [1]}
+    \label{fig:motor-driver-spec}
+\end{figure}
+
+Silniki prądu stałego posiadają następującą specyfikację \ref{fig:motor-spec}. Silnik bez obciążenia pobiera prąd od $I_{o_{min}}=140 mA$ do $I_{o_{max}}=170 mA$, a podczas zwarcia (unieruchomiony wał) może płynąć maksymalnie prąd $I_{stall}=2,8 A$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{src/tech_specifications/TT Geared Motor with Encoder.png}
+    \caption{Specyfikacja silnika TT Geared Motor with Encoder. [2]}
+    \label{fig:motor-spec}
+\end{figure}
+
+Zasilanie silników powinno w związku z tym posiadać napięcie jednego silnika $U=3\ldots7,5 V$ i sumę prądów znamionowych każdego silnika czyli $I=560\ldots680 mA$, a także posiadać gotowość na pobór maksymalnego prądu zwarciowego, w przypadku zatrzymania wszystkich kół robota $I_{stall}=11,2 A$, wartości umieszczono w tabeli \ref{tab:motors-power}. Dodatkowo warto zadbać o maksymalnie dużą pojemność, by robot mógł działać jak najdłużej.
+
+
+    \begin{table}[H]
+    \centering
+        \begin{tabular}{|m{10em}|cc|}
+        \hline
+        Specyfikacja zasilania silników prądu stałego & \multicolumn{1}{c|}{Wartość min} & Wartość max \\ \hline
+        U{[}V{]}                                      & \multicolumn{1}{c|}{3}           & 7,5         \\ \hline
+        I {[}mA{]}                                    & \multicolumn{1}{c|}{560}         & 680         \\ \hline
+        $I_{stall}$                                   & \multicolumn{2}{c|}{11200}                     \\ \hline
+        \end{tabular}
+        \caption{Wymagane wartości zasilania silników.}
+        \label{tab:motors-power}
+    \end{table}
+
+Arduino i moduł sterujący silnikami mogą być wspólnie zasilane dowolnym pakietem ogniw o napięciu $U_{ster}=4,5\ldots12 V$.
+
+\newpage
+\subsubsection{Dobór zasilania}
+
+Robot musi być zasilany przez baterie żeby mógł być w pełni mobilny. Znając wymagania zasilania, należy teraz rozpatrzyć możliwe typy ogniw i ich połączenia. Połączenie równoległe ogniw sumuje pojemność i obciążalność pakietu $I_{równoległe}=I_1+I_2+I_3+\ldots$, a połączenie szeregowe napięcie $U_{szeregowe}=U_1+U_2+U_3+\ldots$. Pakiety te oznacza się nomenklaturą XSYP, gdzie X to liczba ogniw połączonych szeregowo, a Y ilość ogniw połączonych równolegle dla każdej baterii w szeregu, np. 3S2P oznacza pakiet 6 ogniw, 3 połączone szeregowo i 2 równolegle dla każdej baterii w szeregu.
+
+Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy na pobór prądu zwarciowego $I_stall=11,2 A$ w przypadku zaklinowania wszystkich kół robota. W związku z tym moc zasilania powinna wynosić $P=33,6\ldots67,2 W$.
+
+\begin{enumerate}[label=(\Alph*)]
+    \item Baterie alkaliczne
+
+    Ten rodzaj baterii charakteryzuje się jednorazowością, wykorzystując roztwór alkaliczny jako elektrolit. Napięcie ogniwa zwyczajowo wynosi 1,5 V. Ich dużą zaletą jest dostępność i niska cena.
+    
+    Producenci baterii nie podają pojemności, jako że zależy ona w dużej mierze od warunków, w których bateria pracuje, ale można założyć, że dobre ogniwo alkaiczne typu AA powinno mieć do 2300 mAh. Brakuje także bezpośrednich informacji o maksymalnym prądzie obciążenia, producenci zazwyczaj testują spadek napięcia dla maksymalnie prądu 1 A. Najprawdopodobniej bateria tego typu były by wstanie zostać obciążone większym prądem, jednakże patrząc na pojemność widzimy, że czas działania robota spadł by gwałtownie.
+    
+    Ogniwa tego typu nie są odpowiednie dla zastosowania w robocie, by uzyskać potrzebne napięcie trzeba połączyć dwie baterie szeregowo (2S), jednak z powodu niskiej prędkości obrotowej i spadku napięcia, które następuje gwałtowniej wraz z dużym poborem prądu \ref{fig:duracell}, należy zastosować 3S lub 4S by uzyskać odpowiedni woltaż.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics{src/cells_charts/Duracell discharge.png}
+        \caption{Wykres spadku napięcia do czasu pracy dla prądów ogniwa Duracell.}
+        \label{fig:duracell}
+    \end{figure}
+
+    Następnym problemem jest jednorazowość ogniw, jeśli wypadkowa pojemność będzie zbyt mała to używanie ich szybko przestanie być opłacalne. Należy także zwrócić uwagę na to by wypadkowe napięcie nie spadło poniżej 3 V, czyli dla pakietu 3 baterii szeregowych (3S) 1 V na każdej baterii, a dla 4 ogniw szeregowych (4S) 0,75 V. Z wykresu spadków napięć \ref{fig:duracell} widać, że dla prądu 1 A, czas ten nie przekracza nawet 1,5 godziny. Nawet z zgrubnych obliczeń, przyjmując, że prąd obciążenia jednego silnika wynosi 600 mA, pobór prądu robota będzie wynosił 2,4 A. By ograniczyć pobór prądu na jednym pakiecie ogniw szeregowych, należy połączyć je równolegle pięciokrotnie (5P), robot będzie wtedy wstanie pracować w układzie 3-szeregowym (3S5P) przez około 2 godziny i 45 minut, w układzie 4-szeregowym (4S5P) czas ten wydłuży się w przybliżeniu do niecałych 3 godzin. W przypadku zwarcia silnika, baterie te zostaną gwałtownie rozładowane i czas pracy robota znacząco spadnie. 
+    
+    Praca robota nie przekracza trzech godzin, a żeby osiągnąć taki wynik trzeba użyć 15 do 20 baterii. Podsumowując, użycie ogniw alkalicznych jest nieopłacalne.
+
+    \item Akumulatory litowo-jonowe (Li-Ion)
+
+    Ogniwa te można ładować, rolę elektrolitu pełnią w nich sole litowe. Napięcie znamionowe wynosi 3,6 V. Ich zaletą jest duża gęstość energii. Ogniwa te nie mogą zostać nadmiernie naładowane, ani rozładowane, w związku z tym potrzebują układu BMS (ang. Battery Management System). Stosunkowo duża cena wymusza budowanie mniejszych pakietów, jednakże możliwość ładowania ogniw znacznie zwiększa funkcjonalność nawet dla krótszego czasu pracy robota.
+    
+    Ze względu na dostępność do obliczeń posłużono się ogniwem 18650 Li-ion Samsung INR18650-25R 2500mAh 20A \ref{fig:spec-18650}. Ogniwo te ma przystępną cenę, wysoką pojemność i przede wszystkim wysoki maksymalny prąd rozładowania, daje to pewność, że w przypadku awarii nie dojdzie do uszkodzenia baterii i potencjalnego pożaru.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{src/tech_specifications/Li-ion Samsung INR18650-25R .png}
+        \caption{Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R }
+        \label{fig:spec-18650}
+    \end{figure}
+
+    Zgodnie z specyfikacją producenta nie należy ładować ogniwa powyżej napięcia $4,20 \pm 0.05$ V, a także nie należy rozładowywać go do wartości poniżej 2,5 V [5]. W przypadku użycia ogniw jako zasilania robota AGV, nie należy doprowadzić do obniżenia napięcia wypadkowego poniżej 3 V.
+    
+    Napięcie znamionowe akumulatora Li-Ion wynosi 3,7 V, jest to wystarczająca wartość by zasilić robota w granicach dolnego napięcia zasilania. W związku z tym nie jest konieczne by łączyć więcej ogniw w szereg, jednak należy zwrócić uwagę na wykres spadku napięcia (Rysunek \ref{fig:18650-h}, Rysunek \ref{fig:18650-m}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{src/cells_charts/Li-ion discharge hours.png}
+        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w godzinach.}
+        \label{fig:18650-h}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{src/cells_charts/Li-ion discharge minutes.png}
+        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w minutach.}
+        \label{fig:18650-m}
+    \end{figure}
+
+    Dla prądu obciążenia wysokości 3 A, który można uznać za przybliżony prąd pracy w obciążeniu dla 4 silników robota, czas rozładowania pojedynczego akumulatora od pełnego naładowania do 3 V wynosi około 47 minut. Jest to znacznie lepszy czas w porównaniu z bateriami alkalicznymi, zwłaszcza, że ogniwo po ponownym naładowaniu zachowuje zbliżone zależności napięcia do czasu (na wykresie wykres B:2.0A pokrywa się z pierwszym rozładowaniem A:2.0A).
+    
+     Najprostszym rozwiązaniem będzie połączenie ogniw równolegle by ograniczyć prąd obciążenia na pojedynczym akumulatorze, wydłużając jednocześnie pracę robota. Wyniki czasów pracy zapisano w tabeli (Tab. 2.B.1), za wyjściowy prąd obciążenia uznano 3 A, a czasy sczytano z wykresów spadków napięć (Rys. \ref{fig:18650-h}, \ref{fig:18650-m}), dla wartości pośrednich wyznaczono wartość średnią. Obliczono także czas pracy z pojemności typowej (Tab. 2.B.2).
+     
+%---------------------------------
+%tutaj musisz wstawić tabelki jprdl
+%---------------------------------
+
+    Alternatywnie, w celu zwiększenia prędkości obrotowej silników, można użyć pakietów dwóch ogniw szeregowych. Napięcie wypadkowe będzie wynosić wtedy 7,4 V.
+    
+    W przypadku większego napięcia zwiększy się pobór prądu i czas pracy się zmniejszy, ciężko oszacować teoretycznie tą różnice, należy ją sprawdzić w praktyce.
+    
+    Podsumowując, ogniwa Li-Ion nadają się idealnie jako zasilanie robota AGV, zwłaszcza biorąc pod uwagę potencjalnie wysoki prąd zwarciowy silników. Przez kwestie finansowe ograniczono ilość możliwych do użycia ogniw do 4, w związku z tym najlepszym rozwiązaniem jest użycie pakietu 2S2P maksymalizując prędkość obrotową, lub 1S4P maksymalizując czas pracy.
+\end{enumerate}
+
+\subsubsection{Dobór układu BMS}
+
+W celu zabezpieczenia układu należy użyć układ BMS, który będzie zabezpieczał przed nadmiernym rozładowaniem akumulatorów Li-Ion oraz nadmiernym naładowaniem. Dodatkowo BMS zabezpiecza przed zbyt dużym poborem prądu. W przypadku owego projektu, prąd rozruchowy silników może być bliski prądu zwarciowemu czterech silników, czyli 11,2 A.
+
+\newpage
+\subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}
+
 
 \newpage
 \subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}

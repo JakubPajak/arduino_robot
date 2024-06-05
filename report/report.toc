@@ -12,12 +12,16 @@
 \contentsline {subsection}{\numberline {2.7.}\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}{14}{}%
 \contentsline {subsection}{\numberline {2.8.}\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}{15}{}%
 \contentsline {subsection}{\numberline {2.9.}\Large Montaż silników wewnątrz dolnej komory obudowy}{16}{}%
-\contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{16}{}%
-\contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{17}{}%
-\contentsline {subsubsection}{\numberline {2.11.1.}\Large Slave}{17}{}%
-\contentsline {subsection}{\numberline {2.12.}\Large Testy poprawności działania algorytmu sterującego}{18}{}%
-\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{18}{}%
-\contentsline {subsection}{\numberline {3.1.}\Large Połączenie aplikacji z Arduino}{18}{}%
-\contentsline {subsection}{\numberline {3.2.}\Large Podłączenie laserowych czujników odległości}{18}{}%
-\contentsline {subsection}{\numberline {3.3.}\Large Montaż silników oraz kół}{18}{}%
-\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{18}{}%
+\contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{17}{}%
+\contentsline {subsubsection}{\numberline {2.10.1.}\large Obliczanie parametrów zasilania}{17}{}%
+\contentsline {subsubsection}{\numberline {2.10.2.}Dobór zasilania}{19}{}%
+\contentsline {subsubsection}{\numberline {2.10.3.}Dobór układu BMS}{21}{}%
+\contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{22}{}%
+\contentsline {subsection}{\numberline {2.12.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{23}{}%
+\contentsline {subsubsection}{\numberline {2.12.1.}\Large Slave}{23}{}%
+\contentsline {subsection}{\numberline {2.13.}\Large Testy poprawności działania algorytmu sterującego}{24}{}%
+\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{24}{}%
+\contentsline {subsection}{\numberline {3.1.}\Large Połączenie aplikacji z Arduino}{24}{}%
+\contentsline {subsection}{\numberline {3.2.}\Large Podłączenie laserowych czujników odległości}{24}{}%
+\contentsline {subsection}{\numberline {3.3.}\Large Montaż silników oraz kół}{24}{}%
+\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{24}{}%

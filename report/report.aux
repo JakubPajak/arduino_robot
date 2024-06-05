@@ -63,19 +63,37 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.9.}\Large  Montaż silników wewnątrz dolnej komory obudowy}{16}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Listwa boczna usztywniająca mocowanie silnika i eliminująca luzy na kole.}}{16}{}\protected@file@percent }
 \newlabel{fig:listwa-kola}{{23}{16}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.10.}\Large  Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.11.}\Large  Integracja czujników z silnikami oraz implementacja logiki sterowania}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.11.1.}\Large  Slave}{17}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Fragment kodu źródłowego przedstawiający odbiór komunikatów przesyłanych przez mikrokontroler Master.}}{17}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{24}{17}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}}{17}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{25}{17}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Wizualizacja zależności kierunku jazdy od obrotu kół szwedzkich.}}{18}{}\protected@file@percent }
-\newlabel{fig:sensor_init}{{26}{18}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.12.}\Large  Testy poprawności działania algorytmu sterującego}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.}\LARGE  Napotkane problemy}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.}\Large  Połączenie aplikacji z Arduino}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.}\Large  Podłączenie laserowych czujników odległości}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.}\Large  Montaż silników oraz kół}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.}\LARGE  Podsumowanie}{18}{}\protected@file@percent }
-\gdef \@abspage@last{19}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.10.}\Large  Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.10.1.}\large  Obliczanie parametrów zasilania}{17}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Specyfikacja modułu L293D Motor Driver Board. [1]}}{17}{}\protected@file@percent }
+\newlabel{fig:motor-driver-spec}{{24}{17}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Specyfikacja silnika TT Geared Motor with Encoder. [2]}}{18}{}\protected@file@percent }
+\newlabel{fig:motor-spec}{{25}{18}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Wymagane wartości zasilania silników.}}{18}{}\protected@file@percent }
+\newlabel{tab:motors-power}{{1}{18}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.10.2.}Dobór zasilania}{19}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Wykres spadku napięcia do czasu pracy dla prądów ogniwa Duracell.}}{19}{}\protected@file@percent }
+\newlabel{fig:duracell}{{26}{19}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R }}{20}{}\protected@file@percent }
+\newlabel{fig:spec-18650}{{27}{20}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w godzinach.}}{20}{}\protected@file@percent }
+\newlabel{fig:18650-h}{{28}{20}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w minutach.}}{21}{}\protected@file@percent }
+\newlabel{fig:18650-m}{{29}{21}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.10.3.}Dobór układu BMS}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.11.}\Large  Integracja czujników z silnikami oraz implementacja logiki sterowania}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.12.}\Large  Integracja czujników z silnikami oraz implementacja logiki sterowania}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.12.1.}\Large  Slave}{23}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Fragment kodu źródłowego przedstawiający odbiór komunikatów przesyłanych przez mikrokontroler Master.}}{23}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{30}{23}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Fragment kodu źródłowego przedstawiający implementację ruchu pojazdu w odpowiednich kierunkach.}}{23}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{31}{23}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Wizualizacja zależności kierunku jazdy od obrotu kół szwedzkich.}}{24}{}\protected@file@percent }
+\newlabel{fig:sensor_init}{{32}{24}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.13.}\Large  Testy poprawności działania algorytmu sterującego}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.}\LARGE  Napotkane problemy}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.}\Large  Połączenie aplikacji z Arduino}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.}\Large  Podłączenie laserowych czujników odległości}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.}\Large  Montaż silników oraz kół}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.}\LARGE  Podsumowanie}{24}{}\protected@file@percent }
+\gdef \@abspage@last{25}
