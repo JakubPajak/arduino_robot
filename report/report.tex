@@ -493,7 +493,7 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 %
 % TODO: Opisać sposób połączenia ogniw oraz układ BMS (po co jest etc.)
 %
-% Status: 83% warto posiedzieć nad tabelą; sprawdzić czy źródła są potrzebne; poprawić referencje (wstawia sie tylko numer); wstawić brakujące tabele; kontynuować redagowanie; dopisać więcej o BMS
+% Status: 90% warto posiedzieć nad tabelą; sprawdzić czy źródła są potrzebne; poprawić referencje (wstawia sie tylko numer); wstawić brakujące tabele;
 % --------------------------------------------------------
 
 Wszystkie uprzednie kroki realizacji projektu były wykonywane przy prowizorycznym zasilaniu przez cztery baterie alkaliczne połączone szeregowo. Tego typu zasilanie posiada szereg problemów, które utrudniałyby użytkowanie robota, a także nie zostało zgłębione pod względem efektywności. W związku z tym następnym krokiem do stworzenia w pełni funkcjonalnego robota AGV jest analiza zapotrzebowania energetycznego i potencjalnych źródeł energii.
@@ -576,12 +576,12 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
 
     Ogniwa te można ładować, rolę elektrolitu pełnią w nich sole litowe. Napięcie znamionowe wynosi 3,6 V. Ich zaletą jest duża gęstość energii. Ogniwa te nie mogą zostać nadmiernie naładowane, ani rozładowane, w związku z tym potrzebują układu BMS (ang. Battery Management System). Stosunkowo duża cena wymusza budowanie mniejszych pakietów, jednakże możliwość ładowania ogniw znacznie zwiększa funkcjonalność nawet dla krótszego czasu pracy robota.
     
-    Ze względu na dostępność, do obliczeń posłużono się ogniwem 18650 Li-ion Samsung INR18650-25R 2500mAh 20A \ref{fig:spec-18650}. Ogniwo te ma przystępną cenę, wysoką pojemność i przede wszystkim wysoki maksymalny prąd rozładowania, daje to pewność, że w przypadku awarii nie dojdzie do uszkodzenia baterii i potencjalnego pożaru.
+    Ze względu na dostępność, do obliczeń posłużono się ogniwem 18650 Li-ion Samsung INR18650-25R 2500mAh 20A \ref{fig:spec-18650}. Ogniwo te ma przystępną cenę, wysoką pojemność i przede wszystkim wysoki maksymalny prąd rozładowania, daje to pewność, że w przypadku awarii i zwarcia wszystkich silników nie dojdzie do uszkodzenia baterii i potencjalnego pożaru.
 
     \begin{figure}[H]
         \centering
         \includegraphics{src/tech_specifications/Li-ion Samsung INR18650-25R .png}
-        \caption{Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R }
+        \caption{Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R [4].}
         \label{fig:spec-18650}
     \end{figure}
 
@@ -614,19 +614,40 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
 %---------------------------------
 
     W celu zwiększenia prędkości obrotowej silników, można użyć pakietów dwóch ogniw szeregowych. Napięcie wypadkowe będzie wynosić wtedy 7,4 V.
-    %==================================tu skończyłem sprawdzanie=========================================
-    W przypadku większego napięcia zwiększy się pobór prądu i czas pracy się zmniejszy, ciężko oszacować teoretycznie tą różnice, należy ją sprawdzić w praktyce.
     
-    Podsumowując, ogniwa Li-Ion nadają się idealnie jako zasilanie robota AGV, zwłaszcza biorąc pod uwagę potencjalnie wysoki prąd zwarciowy silników. Przez kwestie finansowe ograniczono ilość możliwych do użycia ogniw do 4, w związku z tym najlepszym rozwiązaniem jest użycie pakietu 2S2P maksymalizując prędkość obrotową, lub 1S4P maksymalizując czas pracy.
+    W przypadku większego napięcia zwiększy się pobór prądu i czas pracy w pewnym stopniu się zmniejszy, ciężko oszacować teoretycznie tą różnice, ale można założyć że nie będzie ona znacząca. Zaletą takiego połączenia jest zdecydowanie większa stabilność działania robota. Nawet gdy ogniwa rozładują się do momentu 2,5 V, który niektórzy producenci BMS podają jako graniczne napięcie odcięcia, napięcie wypadkowe wynosić będzie 5 V. Tak wysokie napięcie pozwala na pracę silników w odpowiedniej prędkości, oznacza to, że przez cały czas pracy robota silniki nie stracą znacząco swoją efektywność.
+    
+    Podsumowując, ogniwa Li-Ion nadają się idealnie jako zasilanie robota AGV, zwłaszcza biorąc pod uwagę potencjalnie wysoki prąd zwarciowy silników, który z sporym zapasem owe ogniwa są wstanie dostarczyć. Przez kwestie finansowe ograniczono ilość możliwych do użycia ogniw do 4, w związku z tym najlepszym rozwiązaniem jest użycie pakietu 2S2P maksymalizując prędkość obrotową i czas pracy.
+
+    Ostatecznie użyto pakiet 2S, który także jest wystarczający do zasilania.
 \end{enumerate}
 
 \subsubsection{Dobór układu BMS}
 
-W celu zabezpieczenia układu należy użyć układ BMS, który będzie zabezpieczał przed nadmiernym rozładowaniem akumulatorów Li-Ion oraz nadmiernym naładowaniem. Dodatkowo BMS zabezpiecza przed zbyt dużym poborem prądu. W przypadku owego projektu, prąd rozruchowy silników może być bliski prądu zwarciowemu czterech silników, czyli 11,2 A.
+W celu zabezpieczenia układu należy użyć układ BMS, który będzie zabezpieczał przed nadmiernym rozładowaniem akumulatorów Li-Ion oraz nadmiernym naładowaniem. Dodatkowo BMS zabezpiecza przed zbyt dużym poborem prądu. W przypadku owego projektu, prąd rozruchowy silników może być bliski prądu zwarciowemu czterech silników, czyli 11,2 A. Zastosowano BMS o następujących specyfikacjach \ref{fig:spec-BMS}
 
-\newpage
-\subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}
+\begin{figure}[H]
+    \centering
+    \includegraphics{src/tech_specifications/BMS 2S 20A 8.4V.png}
+    \caption{Specyfikacja modułu BMS 2S 20A 8,4V [5].}
+    \label{fig:spec-BMS}
+\end{figure}
 
+By moduł BMS poprawnie kontrolował stan ogniw, należy go podłączyć w następujący sposób dla pakietu 2S \ref{fig:BMS-2S-schematic} oraz alternatywny pakietu 2S2P \ref{fig:BMS-2S2P-schematic}. Wyjścia "0V", "4,2V" i "8,4V" z modułu BMS zostały przylutowane do koszyczków ogniw 18650, a wyjścia "+" i "-" wychodzą na zasilanie nakładki L293D Motor Driver Board.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{src/cells_charts/BMS 2S schematic.png}
+    \caption{Układ podłączenie ogniw z modułem BMS w pakiecie 2S [6].}
+    \label{fig:BMS-2S-schematic}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{src/cells_charts/BMS 2S2P schematic.png}
+    \caption{Układ podłączenie ogniw z modułem BMS w pakiecie 2S2P.}
+    \label{fig:BMS-2S2P-schematic}
+\end{figure}
 
 \newpage
 \subsection{\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}

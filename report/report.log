@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.5)  6 JUN 2024 02:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.5)  6 JUN 2024 19:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,38 +350,36 @@ Overfull \hbox (5.46864pt too wide) in paragraph at lines 12--12
 [1]
 
 [2]
-
-[3]
-<src/app/home.jpg, id=27, 2055.68pt x 1284.8pt>
+<src/app/home.jpg, id=24, 2055.68pt x 1284.8pt>
 File: src/app/home.jpg Graphic file (type jpg)
 <use src/app/home.jpg>
 Package pdftex.def Info: src/app/home.jpg  used on input line 156.
 (pdftex.def)             Requested size: 455.24411pt x 284.5193pt.
-<src/app/home-2.jpg, id=28, 2055.68pt x 1284.8pt>
+<src/app/home-2.jpg, id=25, 2055.68pt x 1284.8pt>
 File: src/app/home-2.jpg Graphic file (type jpg)
 <use src/app/home-2.jpg>
 Package pdftex.def Info: src/app/home-2.jpg  used on input line 165.
 (pdftex.def)             Requested size: 455.24411pt x 284.5193pt.
 
 
-[4 <./src/app/home.jpg>]
-<src/app/tab-control.jpg, id=32, 2055.68pt x 1284.8pt>
+[3 <./src/app/home.jpg>]
+<src/app/tab-control.jpg, id=29, 2055.68pt x 1284.8pt>
 File: src/app/tab-control.jpg Graphic file (type jpg)
 <use src/app/tab-control.jpg>
 Package pdftex.def Info: src/app/tab-control.jpg  used on input line 180.
 (pdftex.def)             Requested size: 455.24411pt x 284.5193pt.
 
 
-[5 <./src/app/home-2.jpg>]
-<src/app/control.jpg, id=38, 2055.68pt x 1284.8pt>
+[4 <./src/app/home-2.jpg>]
+<src/app/control.jpg, id=35, 2055.68pt x 1284.8pt>
 File: src/app/control.jpg Graphic file (type jpg)
 <use src/app/control.jpg>
 Package pdftex.def Info: src/app/control.jpg  used on input line 189.
 (pdftex.def)             Requested size: 455.24411pt x 284.5193pt.
 
 
-[6 <./src/app/tab-control.jpg> <./src/app/control.jpg>]
-<src/app/list-devices.jpg, id=43, 2055.68pt x 1284.8pt>
+[5 <./src/app/tab-control.jpg> <./src/app/control.jpg>]
+<src/app/list-devices.jpg, id=39, 2055.68pt x 1284.8pt>
 File: src/app/list-devices.jpg Graphic file (type jpg)
 <use src/app/list-devices.jpg>
 Package pdftex.def Info: src/app/list-devices.jpg  used on input line 198.
@@ -390,100 +388,100 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 21
  (C:\Users\Szniobatron\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-<src/app/_getPairedDeviced.png, id=44, 1343.0175pt x 1196.47pt>
+<src/app/_getPairedDeviced.png, id=40, 1343.0175pt x 1196.47pt>
 File: src/app/_getPairedDeviced.png Graphic file (type png)
 <use src/app/_getPairedDeviced.png>
 Package pdftex.def Info: src/app/_getPairedDeviced.png  used on input line 229.
 (pdftex.def)             Requested size: 318.66948pt x 283.89073pt.
 
 
-[7 <./src/app/list-devices.jpg>]
-<src/app/connect.png, id=49, 1473.505pt x 762.85pt>
+[6 <./src/app/list-devices.jpg>]
+<src/app/connect.png, id=46, 1473.505pt x 762.85pt>
 File: src/app/connect.png Graphic file (type png)
 <use src/app/connect.png>
 Package pdftex.def Info: src/app/connect.png  used on input line 238.
 (pdftex.def)             Requested size: 318.66948pt x 164.97568pt.
 
 
-[8 <./src/app/_getPairedDeviced.png> <./src/app/connect.png>]
-<src/app/send.png, id=55, 1459.4525pt x 1304.875pt>
+[7 <./src/app/_getPairedDeviced.png> <./src/app/connect.png>]
+<src/app/send.png, id=52, 1459.4525pt x 1304.875pt>
 File: src/app/send.png Graphic file (type png)
 <use src/app/send.png>
 Package pdftex.def Info: src/app/send.png  used on input line 265.
 (pdftex.def)             Requested size: 318.66948pt x 284.9031pt.
-<src/code_snaps/bt_con_arduino.png, id=56, 2551.5325pt x 2047.65pt>
+<src/code_snaps/bt_con_arduino.png, id=53, 2551.5325pt x 2047.65pt>
 File: src/code_snaps/bt_con_arduino.png Graphic file (type png)
 <use src/code_snaps/bt_con_arduino.png>
 Package pdftex.def Info: src/code_snaps/bt_con_arduino.png  used on input line 283.
 (pdftex.def)             Requested size: 455.24411pt x 365.34291pt.
 
 
-[9 <./src/app/send.png>]
+[8 <./src/app/send.png>]
 
-[10 <./src/code_snaps/bt_con_arduino.png>]
-<src/Robot_pics/Build_1.jpg, id=67, 1517.67pt x 2023.56pt>
+[9 <./src/code_snaps/bt_con_arduino.png>]
+<src/Robot_pics/Build_1.jpg, id=64, 1517.67pt x 2023.56pt>
 File: src/Robot_pics/Build_1.jpg Graphic file (type jpg)
 <use src/Robot_pics/Build_1.jpg>
 Package pdftex.def Info: src/Robot_pics/Build_1.jpg  used on input line 304.
 (pdftex.def)             Requested size: 182.09486pt x 242.78584pt.
-<src/Robot_pics/Mecanum_lines.png, id=69, 640.64343pt x 508.14844pt>
+<src/Robot_pics/Mecanum_lines.png, id=66, 640.64343pt x 508.14844pt>
 File: src/Robot_pics/Mecanum_lines.png Graphic file (type png)
 <use src/Robot_pics/Mecanum_lines.png>
 Package pdftex.def Info: src/Robot_pics/Mecanum_lines.png  used on input line 315.
 (pdftex.def)             Requested size: 227.62206pt x 180.54515pt.
-<src/Robot_pics/blender.png, id=71, 1445.4pt x 782.925pt>
+<src/Robot_pics/blender.png, id=68, 1445.4pt x 782.925pt>
 File: src/Robot_pics/blender.png Graphic file (type png)
 <use src/Robot_pics/blender.png>
 Package pdftex.def Info: src/Robot_pics/blender.png  used on input line 323.
 (pdftex.def)             Requested size: 455.24411pt x 246.58684pt.
 
 
-[11 <./src/Robot_pics/Build_1.jpg> <./src/Robot_pics/Mecanum_lines.png>]
-<src/Robot_pics/Fusion 1.png, id=79, 1445.4pt x 783.67781pt>
+[10 <./src/Robot_pics/Build_1.jpg> <./src/Robot_pics/Mecanum_lines.png>]
+<src/Robot_pics/Fusion 1.png, id=76, 1445.4pt x 783.67781pt>
 File: src/Robot_pics/Fusion 1.png Graphic file (type png)
 <use src/Robot_pics/Fusion 1.png>
 Package pdftex.def Info: src/Robot_pics/Fusion 1.png  used on input line 334.
 (pdftex.def)             Requested size: 455.24411pt x 246.82394pt.
 
 
-[12 <./src/Robot_pics/blender.png> <./src/Robot_pics/Fusion 1.png>]
-<src/Robot_pics/Dol.png, id=87, 632.3625pt x 590.95781pt>
+[11 <./src/Robot_pics/blender.png> <./src/Robot_pics/Fusion 1.png>]
+<src/Robot_pics/Dol.png, id=83, 632.3625pt x 590.95781pt>
 File: src/Robot_pics/Dol.png Graphic file (type png)
 <use src/Robot_pics/Dol.png>
 Package pdftex.def Info: src/Robot_pics/Dol.png  used on input line 349.
 (pdftex.def)             Requested size: 204.85846pt x 191.43681pt.
-<src/Robot_pics/Dol 1.png, id=88, 656.4525pt x 560.0925pt>
+<src/Robot_pics/Dol 1.png, id=84, 656.4525pt x 560.0925pt>
 File: src/Robot_pics/Dol 1.png Graphic file (type png)
 <use src/Robot_pics/Dol 1.png>
 Package pdftex.def Info: src/Robot_pics/Dol 1.png  used on input line 356.
 (pdftex.def)             Requested size: 204.85846pt x 174.78917pt.
-<src/Robot_pics/Gora.png, id=89, 478.78876pt x 442.65375pt>
+<src/Robot_pics/Gora.png, id=85, 478.78876pt x 442.65375pt>
 File: src/Robot_pics/Gora.png Graphic file (type png)
 <use src/Robot_pics/Gora.png>
 Package pdftex.def Info: src/Robot_pics/Gora.png  used on input line 369.
 (pdftex.def)             Requested size: 204.85846pt x 189.39853pt.
-<src/Robot_pics/Gora 1.png, id=90, 581.92406pt x 469.00218pt>
+<src/Robot_pics/Gora 1.png, id=86, 581.92406pt x 469.00218pt>
 File: src/Robot_pics/Gora 1.png Graphic file (type png)
 <use src/Robot_pics/Gora 1.png>
 Package pdftex.def Info: src/Robot_pics/Gora 1.png  used on input line 376.
 (pdftex.def)             Requested size: 204.85846pt x 165.10501pt.
-<src/Robot_pics/Fusion 3.png, id=91, 908.64468pt x 309.40594pt>
+<src/Robot_pics/Fusion 3.png, id=87, 908.64468pt x 309.40594pt>
 File: src/Robot_pics/Fusion 3.png Graphic file (type png)
 <use src/Robot_pics/Fusion 3.png>
 Package pdftex.def Info: src/Robot_pics/Fusion 3.png  used on input line 384.
 (pdftex.def)             Requested size: 455.24411pt x 155.0189pt.
 
 
-[13 <./src/Robot_pics/Dol.png> <./src/Robot_pics/Dol 1.png> <./src/Robot_pics/Gora.png> <./src/Robot_pics/Gora 1.png>]
-<src/Robot_pics/Fusion 2.png, id=96, 1445.4pt x 783.67781pt>
+[12 <./src/Robot_pics/Dol.png> <./src/Robot_pics/Dol 1.png> <./src/Robot_pics/Gora.png> <./src/Robot_pics/Gora 1.png>]
+<src/Robot_pics/Fusion 2.png, id=93, 1445.4pt x 783.67781pt>
 File: src/Robot_pics/Fusion 2.png Graphic file (type png)
 <use src/Robot_pics/Fusion 2.png>
 Package pdftex.def Info: src/Robot_pics/Fusion 2.png  used on input line 391.
 (pdftex.def)             Requested size: 455.24411pt x 246.82394pt.
 
 
-[14 <./src/Robot_pics/Fusion 3.png> <./src/Robot_pics/Fusion 2.png>]
-<src/Robot_pics/Finished.png, id=103, 353.82187pt x 457.71pt>
+[13 <./src/Robot_pics/Fusion 3.png> <./src/Robot_pics/Fusion 2.png>]
+<src/Robot_pics/Finished.png, id=100, 353.82187pt x 457.71pt>
 File: src/Robot_pics/Finished.png Graphic file (type png)
 <use src/Robot_pics/Finished.png>
 Package pdftex.def Info: src/Robot_pics/Finished.png  used on input line 403.
@@ -493,49 +491,49 @@ Overfull \hbox (3.13068pt too wide) in paragraph at lines 410--410
 []\T1/cmr/bx/n/14.4 Implementacja pro-stego kodu we-ry-fi-ku-j¡-cego pra-wi-dªowe pod-
  []
 
-<src/code_snaps/eng_ste_arduino.png, id=105, 415.5525pt x 514.3215pt>
+<src/code_snaps/eng_ste_arduino.png, id=102, 415.5525pt x 514.3215pt>
 File: src/code_snaps/eng_ste_arduino.png Graphic file (type png)
 <use src/code_snaps/eng_ste_arduino.png>
 Package pdftex.def Info: src/code_snaps/eng_ste_arduino.png  used on input line 433.
 (pdftex.def)             Requested size: 455.24411pt x 563.47166pt.
 
 
-[15 <./src/Robot_pics/Finished.png>]
+[14 <./src/Robot_pics/Finished.png>]
 
-[16 <./src/code_snaps/eng_ste_arduino.png>]
-<src/code_snaps/sensor_init.png, id=117, 899.36pt x 560.0925pt>
+[15 <./src/code_snaps/eng_ste_arduino.png>]
+<src/code_snaps/sensor_init.png, id=114, 899.36pt x 560.0925pt>
 File: src/code_snaps/sensor_init.png Graphic file (type png)
 <use src/code_snaps/sensor_init.png>
 Package pdftex.def Info: src/code_snaps/sensor_init.png  used on input line 461.
 (pdftex.def)             Requested size: 227.62206pt x 141.75768pt.
-<src/Robot_pics/listwa-kola.jpg, id=119, 1927.2pt x 948.54375pt>
+<src/Robot_pics/listwa-kola.jpg, id=116, 1927.2pt x 948.54375pt>
 File: src/Robot_pics/listwa-kola.jpg Graphic file (type jpg)
 <use src/Robot_pics/listwa-kola.jpg>
 Package pdftex.def Info: src/Robot_pics/listwa-kola.jpg  used on input line 483.
 (pdftex.def)             Requested size: 227.62206pt x 112.0256pt.
 
 
-[17 <./src/code_snaps/sensor_init.png> <./src/Robot_pics/listwa-kola.jpg>]
-<src/tech_specifications/L293D Motor Driver Board.png, id=127, 279.9258pt x 160.4394pt>
+[16 <./src/code_snaps/sensor_init.png> <./src/Robot_pics/listwa-kola.jpg>]
+<src/tech_specifications/L293D Motor Driver Board.png, id=124, 279.9258pt x 160.4394pt>
 File: src/tech_specifications/L293D Motor Driver Board.png Graphic file (type png)
 <use src/tech_specifications/L293D Motor Driver Board.png>
 Package pdftex.def Info: src/tech_specifications/L293D Motor Driver Board.png  used on input line 507.
 (pdftex.def)             Requested size: 279.92511pt x 160.43901pt.
-<src/tech_specifications/TT Geared Motor with Encoder.png, id=128, 278.9622pt x 300.1614pt>
+<src/tech_specifications/TT Geared Motor with Encoder.png, id=125, 278.9622pt x 300.1614pt>
 File: src/tech_specifications/TT Geared Motor with Encoder.png Graphic file (type png)
 <use src/tech_specifications/TT Geared Motor with Encoder.png>
 Package pdftex.def Info: src/tech_specifications/TT Geared Motor with Encoder.png  used on input line 517.
 (pdftex.def)             Requested size: 278.96152pt x 300.16066pt.
 
 
-[18 <./src/tech_specifications/L293D Motor Driver Board.png>]
+[17 <./src/tech_specifications/L293D Motor Driver Board.png>]
 Underfull \hbox (badness 4792) in paragraph at lines 532--532
 []|\T1/cmr/m/n/10 Specyfikacja za-si-la-nia
  []
 
 
 
-[19 <./src/tech_specifications/TT Geared Motor with Encoder.png>]
+[18 <./src/tech_specifications/TT Geared Motor with Encoder.png>]
 
 LaTeX Warning: Command \' invalid in math mode on input line 548.
 
@@ -544,99 +542,116 @@ LaTeX Warning: Command \l invalid in math mode on input line 548.
 
 Missing character: There is no ó in font cmr7!
 Missing character: There is no ª in font cmr7!
-<src/cells_charts/Duracell discharge.png, id=143, 292.9344pt x 189.3474pt>
+<src/cells_charts/Duracell discharge.png, id=140, 292.9344pt x 189.3474pt>
 File: src/cells_charts/Duracell discharge.png Graphic file (type png)
 <use src/cells_charts/Duracell discharge.png>
 Package pdftex.def Info: src/cells_charts/Duracell discharge.png  used on input line 566.
 (pdftex.def)             Requested size: 292.93369pt x 189.34692pt.
 
 
-[20 <./src/cells_charts/Duracell discharge.png>]
-<src/tech_specifications/Li-ion Samsung INR18650-25R .png, id=149, 455.301pt x 176.8206pt>
+[19 <./src/cells_charts/Duracell discharge.png>]
+<src/tech_specifications/Li-ion Samsung INR18650-25R .png, id=146, 455.301pt x 176.8206pt>
 File: src/tech_specifications/Li-ion Samsung INR18650-25R .png Graphic file (type png)
 <use src/tech_specifications/Li-ion Samsung INR18650-25R .png>
 Package pdftex.def Info: src/tech_specifications/Li-ion Samsung INR18650-25R .png  used on input line 583.
 (pdftex.def)             Requested size: 455.29988pt x 176.82014pt.
-<src/cells_charts/Li-ion discharge hours.png, id=150, 455.301pt x 227.8914pt>
+<src/cells_charts/Li-ion discharge hours.png, id=147, 455.301pt x 227.8914pt>
 File: src/cells_charts/Li-ion discharge hours.png Graphic file (type png)
 <use src/cells_charts/Li-ion discharge hours.png>
 Package pdftex.def Info: src/cells_charts/Li-ion discharge hours.png  used on input line 594.
 (pdftex.def)             Requested size: 455.29988pt x 227.89084pt.
 
 
-[21 <./src/tech_specifications/Li-ion Samsung INR18650-25R .png>]
-<src/cells_charts/Li-ion discharge minutes.png, id=156, 455.301pt x 227.8914pt>
+[20 <./src/tech_specifications/Li-ion Samsung INR18650-25R .png>]
+<src/cells_charts/Li-ion discharge minutes.png, id=153, 455.301pt x 227.8914pt>
 File: src/cells_charts/Li-ion discharge minutes.png Graphic file (type png)
 <use src/cells_charts/Li-ion discharge minutes.png>
 Package pdftex.def Info: src/cells_charts/Li-ion discharge minutes.png  used on input line 601.
 (pdftex.def)             Requested size: 455.29988pt x 227.89084pt.
 
 
-[22 <./src/cells_charts/Li-ion discharge hours.png> <./src/cells_charts/Li-ion discharge minutes.png>]
+[21 <./src/cells_charts/Li-ion discharge hours.png> <./src/cells_charts/Li-ion discharge minutes.png>]
+<src/tech_specifications/BMS 2S 20A 8.4V.png, id=159, 305.34074pt x 210.7875pt>
+File: src/tech_specifications/BMS 2S 20A 8.4V.png Graphic file (type png)
+<use src/tech_specifications/BMS 2S 20A 8.4V.png>
+Package pdftex.def Info: src/tech_specifications/BMS 2S 20A 8.4V.png  used on input line 631.
+(pdftex.def)             Requested size: 305.34pt x 210.78699pt.
+<src/cells_charts/BMS 2S schematic.png, id=160, 1931.215pt x 1112.155pt>
+File: src/cells_charts/BMS 2S schematic.png Graphic file (type png)
+<use src/cells_charts/BMS 2S schematic.png>
+Package pdftex.def Info: src/cells_charts/BMS 2S schematic.png  used on input line 640.
+(pdftex.def)             Requested size: 341.43307pt x 196.61554pt.
 
-[23]
 
-[24]
+[22 <./src/tech_specifications/BMS 2S 20A 8.4V.png>]
+<src/cells_charts/BMS 2S2P schematic.png, id=165, 1158.729pt x 667.293pt>
+File: src/cells_charts/BMS 2S2P schematic.png Graphic file (type png)
+<use src/cells_charts/BMS 2S2P schematic.png>
+Package pdftex.def Info: src/cells_charts/BMS 2S2P schematic.png  used on input line 647.
+(pdftex.def)             Requested size: 341.43307pt x 196.62572pt.
+
+
+[23 <./src/cells_charts/BMS 2S schematic.png> <./src/cells_charts/BMS 2S2P schematic.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 660.
-<src/code_snaps/searchDevices.png, id=169, 1608.0075pt x 1551.7975pt>
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 681.
+<src/code_snaps/searchDevices.png, id=171, 1608.0075pt x 1551.7975pt>
 File: src/code_snaps/searchDevices.png Graphic file (type png)
 <use src/code_snaps/searchDevices.png>
-Package pdftex.def Info: src/code_snaps/searchDevices.png  used on input line 668.
+Package pdftex.def Info: src/code_snaps/searchDevices.png  used on input line 689.
 (pdftex.def)             Requested size: 455.24411pt x 439.33075pt.
 
 
-[25]
-Overfull \hbox (126.225pt too wide) in paragraph at lines 674--675
+[24]
+Overfull \hbox (126.225pt too wide) in paragraph at lines 695--696
 \T1/cmr/m/n/10 Implementacja funk-cji czy-ta-nia war-to-±ci z sen-sora jest bar-dzo pro-sr-to-li-nijna. Za po-moc¡ ma-tody \T1/cmtt/m/n/10 readRangeContinuousMillimeters()
  []
 
-<src/code_snaps/readFromSensor.png, id=173, 1254.6875pt x 636.3775pt>
+<src/code_snaps/readFromSensor.png, id=176, 1254.6875pt x 636.3775pt>
 File: src/code_snaps/readFromSensor.png Graphic file (type png)
 <use src/code_snaps/readFromSensor.png>
-Package pdftex.def Info: src/code_snaps/readFromSensor.png  used on input line 680.
+Package pdftex.def Info: src/code_snaps/readFromSensor.png  used on input line 701.
 (pdftex.def)             Requested size: 455.24411pt x 230.90184pt.
 
 
-[26 <./src/code_snaps/searchDevices.png>]
-<src/code_snaps/processInfo.png, id=178, 2071.74pt x 2772.3575pt>
+[25 <./src/code_snaps/searchDevices.png>]
+<src/code_snaps/processInfo.png, id=181, 2071.74pt x 2772.3575pt>
 File: src/code_snaps/processInfo.png Graphic file (type png)
 <use src/code_snaps/processInfo.png>
-Package pdftex.def Info: src/code_snaps/processInfo.png  used on input line 702.
+Package pdftex.def Info: src/code_snaps/processInfo.png  used on input line 723.
 (pdftex.def)             Requested size: 455.24411pt x 609.2014pt.
 
 
-[27 <./src/code_snaps/readFromSensor.png>]
+[26 <./src/code_snaps/readFromSensor.png>]
 
-[28 <./src/code_snaps/processInfo.png>]
-<src/code_snaps/sendSteer.png, id=187, 1501.61pt x 598.235pt>
+[27 <./src/code_snaps/processInfo.png>]
+<src/code_snaps/sendSteer.png, id=190, 1501.61pt x 598.235pt>
 File: src/code_snaps/sendSteer.png Graphic file (type png)
 <use src/code_snaps/sendSteer.png>
-Package pdftex.def Info: src/code_snaps/sendSteer.png  used on input line 714.
+Package pdftex.def Info: src/code_snaps/sendSteer.png  used on input line 735.
 (pdftex.def)             Requested size: 455.24411pt x 181.36143pt.
-<src/code_snaps/Comunication_slave.png, id=188, 345.54094pt x 357.58594pt>
+<src/code_snaps/Comunication_slave.png, id=191, 345.54094pt x 357.58594pt>
 File: src/code_snaps/Comunication_slave.png Graphic file (type png)
 <use src/code_snaps/Comunication_slave.png>
-Package pdftex.def Info: src/code_snaps/Comunication_slave.png  used on input line 724.
+Package pdftex.def Info: src/code_snaps/Comunication_slave.png  used on input line 745.
 (pdftex.def)             Requested size: 182.09486pt x 188.44473pt.
-<src/code_snaps/movement_implementation.png, id=190, 343.2825pt x 400.49625pt>
+<src/code_snaps/movement_implementation.png, id=193, 343.2825pt x 400.49625pt>
 File: src/code_snaps/movement_implementation.png Graphic file (type png)
 <use src/code_snaps/movement_implementation.png>
-Package pdftex.def Info: src/code_snaps/movement_implementation.png  used on input line 733.
+Package pdftex.def Info: src/code_snaps/movement_implementation.png  used on input line 754.
 (pdftex.def)             Requested size: 182.09486pt x 212.43922pt.
 
 
-[29 <./src/code_snaps/sendSteer.png> <./src/code_snaps/Comunication_slave.png>]
-<src/Robot_pics/Movement.png, id=198, 532.99126pt x 149.05687pt>
+[28 <./src/code_snaps/sendSteer.png> <./src/code_snaps/Comunication_slave.png>]
+<src/Robot_pics/Movement.png, id=201, 532.99126pt x 149.05687pt>
 File: src/Robot_pics/Movement.png Graphic file (type png)
 <use src/Robot_pics/Movement.png>
-Package pdftex.def Info: src/Robot_pics/Movement.png  used on input line 742.
+Package pdftex.def Info: src/Robot_pics/Movement.png  used on input line 763.
 (pdftex.def)             Requested size: 318.66948pt x 89.12094pt.
 
 
-[30 <./src/code_snaps/movement_implementation.png> <./src/Robot_pics/Movement.png>]
+[29 <./src/code_snaps/movement_implementation.png> <./src/Robot_pics/Movement.png>]
 
-[31] (report.aux)
+[30] (report.aux)
  ***********
 LaTeX2e <2024-06-01>
 L3 programming layer <2024-05-08>
@@ -647,17 +662,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7561 strings out of 473938
- 132182 string characters out of 5724560
+ 7591 strings out of 473938
+ 133303 string characters out of 5724560
  1938893 words of memory out of 5000000
- 30338 multiletter control sequences out of 15000+600000
+ 30368 multiletter control sequences out of 15000+600000
  567803 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,12n,65p,1315b,458s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1728.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Szniobatron\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2488.pk><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Szniobatron/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (32 pages, 6288685 bytes).
+Output written on report.pdf (31 pages, 7923588 bytes).
 PDF statistics:
- 741 PDF objects out of 1000 (max. 8388607)
+ 745 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 285 words of extra memory for PDF output out of 10000 (max. 10000000)
 
