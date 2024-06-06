@@ -15,14 +15,14 @@
 \contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{18}{}%
 \contentsline {subsubsection}{\numberline {2.10.1.}\large Obliczanie parametrów zasilania}{18}{}%
 \contentsline {subsubsection}{\numberline {2.10.2.}Dobór zasilania}{20}{}%
-\contentsline {subsubsection}{\numberline {2.10.3.}Dobór układu BMS}{22}{}%
-\contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{23}{}%
-\contentsline {subsection}{\numberline {2.12.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{24}{}%
-\contentsline {subsubsection}{\numberline {2.12.1.}\large Master}{24}{}%
-\contentsline {subsubsection}{\numberline {2.12.2.}\Large Slave}{28}{}%
-\contentsline {subsection}{\numberline {2.13.}\Large Testy poprawności działania algorytmu sterującego}{29}{}%
-\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{29}{}%
-\contentsline {subsection}{\numberline {3.1.}\Large Podłączenie laserowych czujników odległości}{29}{}%
-\contentsline {subsection}{\numberline {3.2.}\Large Montaż silników oraz kół}{29}{}%
-\contentsline {subsection}{\numberline {3.3.}\Large Implementacja logiki sterowania}{30}{}%
-\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{30}{}%
+\contentsline {subsubsection}{\numberline {2.10.3.}Dobór układu BMS}{23}{}%
+\contentsline {subsection}{\numberline {2.11.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{24}{}%
+\contentsline {subsection}{\numberline {2.12.}\Large Integracja czujników z silnikami oraz implementacja logiki sterowania}{25}{}%
+\contentsline {subsubsection}{\numberline {2.12.1.}\large Master}{25}{}%
+\contentsline {subsubsection}{\numberline {2.12.2.}\Large Slave}{29}{}%
+\contentsline {subsection}{\numberline {2.13.}\Large Testy poprawności działania algorytmu sterującego}{30}{}%
+\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{30}{}%
+\contentsline {subsection}{\numberline {3.1.}\Large Podłączenie laserowych czujników odległości}{30}{}%
+\contentsline {subsection}{\numberline {3.2.}\Large Montaż silników oraz kół}{30}{}%
+\contentsline {subsection}{\numberline {3.3.}\Large Implementacja logiki sterowania}{31}{}%
+\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{31}{}%
