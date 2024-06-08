@@ -20,8 +20,8 @@
 \contentsline {subsubsection}{\numberline {2.11.1.}\large Master}{24}{}%
 \contentsline {subsubsection}{\numberline {2.11.2.}\Large Slave}{28}{}%
 \contentsline {subsection}{\numberline {2.12.}\Large Testy poprawności działania algorytmu sterującego}{29}{}%
-\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{29}{}%
-\contentsline {subsection}{\numberline {3.1.}\Large Podłączenie laserowych czujników odległości}{29}{}%
-\contentsline {subsection}{\numberline {3.2.}\Large Montaż silników oraz kół}{29}{}%
-\contentsline {subsection}{\numberline {3.3.}\Large Implementacja logiki sterowania}{30}{}%
-\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{30}{}%
+\contentsline {section}{\numberline {3.}\LARGE Napotkane problemy}{31}{}%
+\contentsline {subsection}{\numberline {3.1.}\Large Podłączenie laserowych czujników odległości}{31}{}%
+\contentsline {subsection}{\numberline {3.2.}\Large Montaż silników oraz kół}{31}{}%
+\contentsline {subsection}{\numberline {3.3.}\Large Implementacja logiki sterowania}{32}{}%
+\contentsline {section}{\numberline {4.}\LARGE Podsumowanie}{32}{}%

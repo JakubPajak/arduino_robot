@@ -11,6 +11,8 @@
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{enumitem}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{bibliography.bib}
 
 \geometry{
     a4paper,
@@ -656,7 +658,7 @@ By moduł BMS poprawnie kontrolował stan ogniw, należy go podłączyć w nast�
 %
 % TODO: Opisać kod implementujący integrację czujników z silnikami
 %
-% Status: Łukasz 50% (jeszcze coś dopiszę)
+% Status: Łukasz 50% (jeszcze coś dopiszę) || Jakub - 100%
 % --------------------------------------------------------
 
 W celu osiągnięcia optymalnej integracji modułu czujników oraz modułu sterowania silnikami zastosowano strukturę opartą na magistrali I2C. W omawianym układzie wykorzystano architekturę typu Master-Slave. Moduł odczytu danych z czujników oraz moduł odpowiedzialny za sterowanie silnikami są realizowane przez dwa oddzielne mikrokontrolery Arduino UNO. Mikrokontroler odpowiedzialny za odczyt wartości z czujników pełni rolę Master, przetwarzając informacje uzyskane z czujników i na ich podstawie przesyłając sygnały sterujące do mikrokontrolera pełniącego rolę Slave.
@@ -772,8 +774,26 @@ Funkcje określające kierunek jazdy zostały skonstruowane wedle logiki i geome
 %
 % TODO: Opisać proces testowania oraz rezultaty algorytmu testującego
 %
-% Status: 
+% Status: Jakub - 80% (? idk czy ktoś chce coś dodać)
 % --------------------------------------------------------
+
+Testy algorytmu sterującego w początkowej fazie były przeprowadzane poprzez analizę danych wyświetlanych w konsoli środowiska Arduino IDE. Wartości zwracane przez funkcje były weryfikowane w zależności od tego, które czujniki były zakryte.
+
+Kolejnym etapem było wdrożenie algorytmu na rzeczywisty obiekt oraz ocena jego działania w środowisku rzeczywistym. Na podstawie dalszej analizy działania algorytmu, czas opóźnienia przełączenia w tryb normalny był dostosowywany w zależności od prędkości obrotowej silników.
+
+Należy podkreślić, że algorytm sterujący w pełni spełnia założone wymagania. Jednakże, z powodu niedoskonałości konstrukcyjnych oraz ograniczeń elementów elektronicznych, robot nie realizuje założonych scenariuszy w sposób idealny.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{src/Robot_pics/test1.jpg}
+\caption{Symulacja ściany, do której robot dojeżdża}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{src/Robot_pics/test2.jpg}
+\caption{Koniec symulowanej wnęki - robot rozpoczyna wyjazd z wnęki}
+\end{figure}
 
 \section{\LARGE Napotkane problemy}
 \subsection{\Large Podłączenie laserowych czujników odległości}
@@ -821,6 +841,23 @@ Rozwiązaniem okazało się zastosowanie dodatkowego warunku sprawdzającego sta
 %
 % TODO: Napisać zgrabne podsumowanie projektu, czego się nauczyliśmy oraz sensowne wnioski do popełnionych błędów.
 %
-% Status: 
+% Status: Jakub - 100% (?) idk czy ktoś chce coś dodać
 % --------------------------------------------------------
+
+Cel projektu został zrealizowany z sukcesem. Robot został skonstruowany zgodnie z założeniami wstępnymi i realizuje cele określone na początku projektu. Niemniej jednak, działanie robota nie jest idealne z powodu problemów uniemożliwiających jazdę w liniach prostych.
+
+Problem ten mógłby zostać zminimalizowany poprzez zastosowanie enkoderów w silnikach. Enkodery umożliwiłyby precyzyjne określenie prędkości obrotowej i jej śledzenie w czasie rzeczywistym, co pozwoliłoby na bardziej precyzyjną regulację. Rozwiązanie to nie zostało wdrożone z powodu ograniczonego czasu oraz wątpliwości dotyczących możliwości podłączenia dodatkowych czujników do obecnego układu mikrokontrolerów.
+
+Dodatkowo, poprawa jakości silników i zastosowanie bardziej zaawansowanych sterowników, na przykład dwóch wysokiej klasy sterowników dwukanałowych, mogłaby znacząco zmniejszyć różnice w prędkościach obrotowych silników.
+
+Projekt ten pozwolił zespołowi na dogłębne zapoznanie się z procesem tworzenia prostego robota mobilnego. Zdobyte doświadczenia w zakresie doboru ogniw zasilających, implementacji algorytmu sterowania oraz integracji czujników będą cennym zasobem w przyszłych projektach.
+
+W trakcie realizacji projektu napotkano wiele nieprzewidzianych problemów, co z kolei przyczyniło się do rozwoju umiejętności rozwiązywania problemów, niezwykle cenionych na 
+aktualnym rynku pracy. 
+
+\newpage
+
+\nocite{*}
+\printbibliography
+
 \end{document}
