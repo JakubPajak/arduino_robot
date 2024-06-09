@@ -12,6 +12,8 @@
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage[style=alphabetic]{biblatex}
+\usepackage{multirow}
+\usepackage{hyperref}
 \addbibresource{bibliography.bib}
 
 \geometry{
@@ -495,7 +497,7 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 %
 % TODO: Opisać sposób połączenia ogniw oraz układ BMS (po co jest etc.)
 %
-% Status: 93% warto posiedzieć nad tabelą; sprawdzić czy źródła są potrzebne; wstawić brakujące tabele;
+% Status: 99.99% jeśli bibliografia będzie wyrzucana to muszę ją usunąć z swojej części; nie do końca wiem co napisać o podłączeniu czujników
 % --------------------------------------------------------
 
 Wszystkie uprzednie kroki realizacji projektu były wykonywane przy prowizorycznym zasilaniu przez cztery baterie alkaliczne połączone szeregowo. Tego typu zasilanie posiada szereg problemów, które utrudniałyby użytkowanie robota, a także nie zostało zgłębione pod względem efektywności. W związku z tym następnym krokiem do stworzenia w pełni funkcjonalnego robota AGV jest analiza zapotrzebowania energetycznego i potencjalnych źródeł energii.
@@ -507,7 +509,7 @@ Robot AGV korzysta z czterech silników kątowych z przekładnią SJ02. Każdy s
 \begin{figure}[H]
     \centering
     \includegraphics{src/tech_specifications/L293D Motor Driver Board.png}
-    \caption{Specyfikacja modułu L293D Motor Driver Board. [1]}
+    \caption{Specyfikacja modułu L293D Motor Driver Board. \cite{MotorDriver}}
     \label{fig:motor-driver-spec}
 \end{figure}
 
@@ -517,7 +519,7 @@ pobiera prąd od $I_{o_{min}}=140 mA$ do $I_{o_{max}}=170 mA$, a podczas zwarcia
 \begin{figure}[H]
     \centering
     \includegraphics{src/tech_specifications/TT Geared Motor with Encoder.png}
-    \caption{Specyfikacja silnika TT Geared Motor with Encoder. [2]}
+    \caption{Specyfikacja silnika TT Geared Motor with Encoder. \cite{MotorEngine}}
     \label{fig:motor-spec}
 \end{figure}
 
@@ -566,7 +568,7 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
     \begin{figure}[H]
         \centering
         \includegraphics{src/cells_charts/Duracell discharge.png}
-        \caption{Wykres spadku napięcia do czasu pracy dla prądów ogniwa Duracell.}
+        \caption{Wykres spadku napięcia do czasu pracy dla prądów ogniwa Duracell. \cite{DuracellChart}}
         \label{fig:duracell}
     \end{figure}
 
@@ -583,25 +585,25 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
     \begin{figure}[H]
         \centering
         \includegraphics{src/tech_specifications/Li-ion Samsung INR18650-25R .png}
-        \caption{Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R [4].}
+        \caption{Specyfikacja ogniwa18650 Li-ion Samsung INR18650-25R \cite{18650Spec}.}
         \label{fig:spec-18650}
     \end{figure}
 
-    Zgodnie z specyfikacją producenta nie należy ładować ogniwa powyżej napięcia $4,20 \pm 0,05$ V, a także nie należy rozładowywać go do wartości poniżej 2,5 V [5]. W przypadku użycia ogniw jako zasilania robota AGV, nie należy doprowadzić do obniżenia napięcia wypadkowego poniżej 3 V.
+    Zgodnie z specyfikacją producenta nie należy ładować ogniwa powyżej napięcia $4,20 \pm 0,05$ V, a także nie należy rozładowywać go do wartości poniżej 2,5 V \cite{18650Charts}. W przypadku użycia ogniw jako zasilania robota AGV, nie należy doprowadzić do obniżenia napięcia wypadkowego poniżej 3 V.
     
     Napięcie znamionowe akumulatora Li-Ion wynosi 3,7 V, jest to wystarczająca wartość by zasilić robota w granicach dolnego napięcia zasilania. W związku z tym nie jest konieczne by łączyć więcej ogniw w szereg, jednak należy zwrócić uwagę na wykres spadku napięcia (Rys. \ref{fig:18650-h}, Rys. \ref{fig:18650-m}).
 
     \begin{figure}[H]
         \centering
         \includegraphics{src/cells_charts/Li-ion discharge hours.png}
-        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w godzinach.}
+        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w godzinach. \cite{18650Charts}}
         \label{fig:18650-h}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics{src/cells_charts/Li-ion discharge minutes.png}
-        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w minutach.}
+        \caption{Wykres spadku napięcia w czasie dla prądów obciążenia ogniwa INR18650-25R w minutach. \cite{18650Charts}}
         \label{fig:18650-m}
     \end{figure}
 
@@ -609,11 +611,37 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
     
     Połączenie ogniw równolegle pozwala ograniczyć prąd obciążenia na pojedynczym akumulatorze, wydłużając jednocześnie pracę robota. W teorii użycie BMS 1S pozwoli kontrolować tego typu pakiet, jeśli wybrany BMS odłączy ogniwa przy napięciu 3 V. 
     
-    Problematycznym jest fakt pracy silników na granicznym napięciu zasilania. Silniki stracą znacząco swoją prędkość obrotową, pogłębiając owy problem wraz z dłuższą pracą robota. Wyniki czasów pracy zapisano w tabeli (Tab. 2.B.1), za wyjściowy prąd obciążenia uznano 3 A, a czasy sczytano z wykresów spadków napięć (Rys. \ref{fig:18650-h}, Rys. \ref{fig:18650-m}), dla wartości pośrednich wyznaczono wartość średnią. Obliczono także czas pracy z pojemności typowej (Tab. 2.B.2).
-     
-%---------------------------------
-%tutaj musisz wstawić tabelki jprdl
-%---------------------------------
+    Problematycznym jest fakt pracy silników na granicznym napięciu zasilania. Silniki stracą znacząco swoją prędkość obrotową, pogłębiając owy problem wraz z dłuższą pracą robota. Wyniki czasów pracy zapisano w tabeli (Tab. \ref{tab:cells-times-from-chart}), za wyjściowy prąd obciążenia uznano 3 A, a czasy sczytano z wykresów spadków napięć (Rys. \ref{fig:18650-h}, Rys. \ref{fig:18650-m}), dla wartości pośrednich wyznaczono wartość średnią. Obliczono także czas pracy z pojemności typowej (Tab. \ref{tab:cells-times-from-capacity}).
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|cc|}
+        \hline
+        \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Układ \\ pakietu\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Prąd obciążenia\\ na pojedyncze \\ ogniwo {[}A{]}\end{tabular}} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}Przybliżony czas pracy\\ od 4,2 V do 3 V dla \\ charakterystyk spadków \\ napięć\end{tabular}} \\ \cline{3-4} 
+                                                                                &                                                                                                            & \multicolumn{1}{c|}{{[}min{]}}                                                    & {[}h{]}                                                   \\ \hline
+        1P                                                                        & 3                                                                                                          & \multicolumn{1}{c|}{47}                                                           & 0,73                                                      \\ \hline
+        2P                                                                        & 1,50                                                                                                       & \multicolumn{1}{c|}{108}                                                          & 1,80                                                      \\ \hline
+        3P                                                                        & 1                                                                                                          & \multicolumn{1}{c|}{144}                                                          & 2,40                                                      \\ \hline
+        4P                                                                        & 0,75                                                                                                       & \multicolumn{1}{c|}{216}                                                          & 3,60                                                      \\ \hline
+        \end{tabular}
+        \caption{Przybliżony czas pracy pakietu ogniw względem wykresów spadków napięć.}
+        \label{tab:cells-times-from-chart}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|cc|}
+        \hline
+        \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Układ \\ pakietu\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Prąd obciążenia\\ na pojedyncze \\ ogniwo {[}A{]}\end{tabular}} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}Przybliżony czas pracy\\ od 4,2 V do 3 V dla \\ typowych pojemności\end{tabular}} \\ \cline{3-4} 
+                                                                                &                                                                                                            & \multicolumn{1}{c|}{{[}min{]}}                                                    & {[}h{]}                                                   \\ \hline
+        1P                                                                        & 3                                                                                                          & \multicolumn{1}{c|}{50}                                                           & 0,83                                                      \\ \hline
+        2P                                                                        & 1,50                                                                                                       & \multicolumn{1}{c|}{100}                                                          & 1,67                                                      \\ \hline
+        3P                                                                        & 1                                                                                                          & \multicolumn{1}{c|}{150}                                                          & 2,50                                                      \\ \hline
+        4P                                                                        & 0,75                                                                                                       & \multicolumn{1}{c|}{200}                                                          & 3,33                                                      \\ \hline
+        \end{tabular}
+        \caption{Czas pracy pakietu ogniw obliczony z typowej pojemności.}
+        \label{tab:cells-times-from-capacity}
+    \end{table}
 
     W celu zwiększenia prędkości obrotowej silników, można użyć pakietów dwóch ogniw szeregowych. Napięcie wypadkowe będzie wynosić wtedy 7,4 V.
     
@@ -622,7 +650,7 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
     Podsumowując, ogniwa Li-Ion nadają się idealnie jako zasilanie robota AGV, zwłaszcza biorąc pod uwagę potencjalnie wysoki prąd zwarciowy silników, który z sporym zapasem owe ogniwa są wstanie dostarczyć. Przez kwestie finansowe ograniczono ilość możliwych do użycia ogniw do 4, w związku z tym najlepszym rozwiązaniem jest użycie pakietu 2S2P maksymalizując prędkość obrotową i czas pracy.
 
     Ostatecznie użyto pakiet 2S, który także jest wystarczający do zasilania.
-\end{enumerate}
+    \end{enumerate}
 
 \subsubsection{Dobór układu BMS}
 
@@ -631,7 +659,7 @@ W celu zabezpieczenia układu należy użyć układ BMS, który będzie zabezpie
 \begin{figure}[H]
     \centering
     \includegraphics{src/tech_specifications/BMS 2S 20A 8.4V.png}
-    \caption{Specyfikacja modułu BMS 2S 20A 8,4V [5].}
+    \caption{Specyfikacja modułu BMS 2S 20A 8,4V \cite{BMSSpec}.}
     \label{fig:spec-BMS}
 \end{figure}
 
@@ -640,7 +668,7 @@ By moduł BMS poprawnie kontrolował stan ogniw, należy go podłączyć w nast�
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{src/cells_charts/BMS 2S schematic.png}
-    \caption{Układ podłączenie ogniw z modułem BMS w pakiecie 2S [6].}
+    \caption{Układ podłączenie ogniw z modułem BMS w pakiecie 2S \cite{BMSSchematic}.}
     \label{fig:BMS-2S-schematic}
 \end{figure}
 
