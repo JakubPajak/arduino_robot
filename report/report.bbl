@@ -81,7 +81,7 @@
       \endverb
       \warn{\item online entry '18650Spec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring}
     \endentry
-    \entry{DuracellChart}{online}{}{}
+    \entry{MotorEngine}{online}{}{}
       \name{author}{1}{}{%
         {{hash=a3ce4d9da9059912d6a03b289b8ecee8}{%
            family={BOTLAND},
@@ -100,37 +100,6 @@
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{extraalpha}{3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Question: 2) Use the datasheet e for a Duracell AA battery to estimate the total energy (in joules) available from the battery if it is operated until its output}
-      \field{year}{2024}
-      \verb{urlraw}
-      \verb https://www.chegg.com/homework-help/questions-and-answers/2-use-datasheet-e-duracell-aa-battery-estimate-total-energy-joules-available-battery-opera-q91841138
-      \endverb
-      \verb{url}
-      \verb https://www.chegg.com/homework-help/questions-and-answers/2-use-datasheet-e-duracell-aa-battery-estimate-total-energy-joules-available-battery-opera-q91841138
-      \endverb
-      \warn{\item online entry 'DuracellChart' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring}
-    \endentry
-    \entry{MotorEngine}{online}{}{}
-      \name{author}{1}{}{%
-        {{hash=a3ce4d9da9059912d6a03b289b8ecee8}{%
-           family={BOTLAND},
-           familyi={B\bibinitperiod}}}%
-      }
-      \strng{namehash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{fullhash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{fullhashraw}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{bibnamehash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{authorbibnamehash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{authornamehash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{authorfullhash}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \strng{authorfullhashraw}{a3ce4d9da9059912d6a03b289b8ecee8}
-      \field{extraname}{4}
-      \field{labelalpha}{BOT24}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{extraalpha}{4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Silnik kątowy z przekładnią SJ02 120:1 6V 160RPM + enkoder}
@@ -171,6 +140,37 @@
       \verb https://allegro.pl/oferta/modul-bms-2s-20a-8-4v-ladowarka-li-ion-z-balansere-12679801390?bi_s=ads&bi_m=listing%3Adesktop%3Aquery&bi_c=OTNmNDg3NTItOWRhNS00ZDY2LTg5NGMtODgwMjYyZWJlMzE3AA&bi_t=ape&referrer=proxy&emission_unit_id=ca43e740-256d-4c4b-b7a9-c21c0136415b&fbclid=IwZXh0bgNhZW0CMTAAAR09SlzbWDEsLIXakBfhl6CUiEjKYxkaIUoVbaIUTpI95RiMR7OhRmCofao_aem_AaodTfu5K3XsM8NOnaqenDAfCsGCY0fEYhhE1vZcPl5MLo2-KQsEacHMsWM5YihMt_2o7eh2hVWE97ilx4SyQIqs
       \endverb
       \warn{\item online entry 'BMSSpec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{DuracellChart}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=3a82f66fe53251f44ad3d1a90d863e4a}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Chegg},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{fullhash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{fullhashraw}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{bibnamehash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{authorbibnamehash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{authornamehash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{authorfullhash}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \strng{authorfullhashraw}{3a82f66fe53251f44ad3d1a90d863e4a}
+      \field{labelalpha}{Inc24}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Question: 2) Use the datasheet e for a Duracell AA battery to estimate the total energy (in joules) available from the battery if it is operated until its output}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.chegg.com/homework-help/questions-and-answers/2-use-datasheet-e-duracell-aa-battery-estimate-total-energy-joules-available-battery-opera-q91841138
+      \endverb
+      \verb{url}
+      \verb https://www.chegg.com/homework-help/questions-and-answers/2-use-datasheet-e-duracell-aa-battery-estimate-total-energy-joules-available-battery-opera-q91841138
+      \endverb
+      \warn{\item online entry 'DuracellChart' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring}
     \endentry
     \entry{18650Charts}{online}{}{}
       \name{author}{1}{}{%

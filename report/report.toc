@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {2.7.}\Large Implementacja prostego kodu weryfikującego prawidłowe podłączenie silników}{14}{subsection.0.2.7}%
 \contentsline {subsection}{\numberline {2.8.}\Large Podłączenie oraz weryfikacja poprawności działania czujników laserowych}{15}{subsection.0.2.8}%
 \contentsline {subsection}{\numberline {2.9.}\Large Montaż silników wewnątrz dolnej komory obudowy}{16}{subsection.0.2.9}%
-\contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}{17}{subsection.0.2.10}%
+\contentsline {subsection}{\numberline {2.10.}\Large Montaż ogniw wraz z układem BMS}{17}{subsection.0.2.10}%
 \contentsline {subsubsection}{\numberline {2.10.1.}\large Obliczanie parametrów zasilania}{17}{subsubsection.0.2.10.1}%
 \contentsline {subsubsection}{\numberline {2.10.2.}Dobór zasilania}{19}{subsubsection.0.2.10.2}%
 \contentsline {subsubsection}{\numberline {2.10.3.}Dobór układu BMS}{22}{subsubsection.0.2.10.3}%

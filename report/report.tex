@@ -435,7 +435,7 @@ Do weryfikacji działania silników można zakomentować pozostałe ustawienia s
 \begin{figure}[H]
     \centering
     \includegraphics*[width=1.0\textwidth]{"src/code_snaps/eng_ste_arduino.png"}
-    \caption{Framgent kodu źródłowego przedstawiający weryfikacje prawidłowego połączenia silników}
+    \caption{Fragment kodu źródłowego przedstawiający weryfikacje prawidłowego połączenia silników}
     \label{fig:eng_ste_arduino}
 \end{figure}
 
@@ -490,14 +490,14 @@ Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło 
 \end{figure}
 
 \newpage
-\subsection{\Large Montaż ogniw wraz z układem BMS oraz podłączenie czujników}
+\subsection{\Large Montaż ogniw wraz z układem BMS}
 
 % --------------------------------------------------------
 % Autor: Bartosz Wuwer && Piotr Legień
 %
 % TODO: Opisać sposób połączenia ogniw oraz układ BMS (po co jest etc.)
 %
-% Status: 99.99% jeśli bibliografia będzie wyrzucana to muszę ją usunąć z swojej części; nie do końca wiem co napisać o podłączeniu czujników
+% Status: 100%
 % --------------------------------------------------------
 
 Wszystkie uprzednie kroki realizacji projektu były wykonywane przy prowizorycznym zasilaniu przez cztery baterie alkaliczne połączone szeregowo. Tego typu zasilanie posiada szereg problemów, które utrudniałyby użytkowanie robota, a także nie zostało zgłębione pod względem efektywności. W związku z tym następnym krokiem do stworzenia w pełni funkcjonalnego robota AGV jest analiza zapotrzebowania energetycznego i potencjalnych źródeł energii.
@@ -554,7 +554,7 @@ $U_{szeregowe}=U_1+U_2+U_3+\ldots$. Pakiety te oznacza się nomenklaturą XSYP, 
 połączonych szeregowo, a Y ilość ogniw połączonych równolegle dla każdej baterii w szeregu, np. 3S2P 
 oznacza pakiet 6 ogniw, 3 połączone szeregowo i 2 równolegle dla każdej baterii w szeregu.
 
-Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy na pobór prądu zwarciowego $I_stall=11,2 A$ w przypadku zaklinowania wszystkich kół robota. W związku z tym moc zasilania powinna wynosić $P=33,6\ldots67,2 W$.
+Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy na pobór prądu zwarciowego $I_{stall}=11,2 A$ w przypadku zaklinowania wszystkich kół robota. W związku z tym moc zasilania powinna wynosić $P=33,6\ldots67,2 W$.
 
 \begin{enumerate}[label=(\Alph*)]
     \item \textbf{Baterie alkaliczne}
@@ -649,7 +649,7 @@ Pakiet powinien mieć wypadkowe napięcie $U=3\ldots7,5 V$, a także być gotowy
     
     Podsumowując, ogniwa Li-Ion nadają się idealnie jako zasilanie robota AGV, zwłaszcza biorąc pod uwagę potencjalnie wysoki prąd zwarciowy silników, który z sporym zapasem owe ogniwa są wstanie dostarczyć. Przez kwestie finansowe ograniczono ilość możliwych do użycia ogniw do 4, w związku z tym najlepszym rozwiązaniem jest użycie pakietu 2S2P maksymalizując prędkość obrotową i czas pracy.
 
-    Ostatecznie użyto pakiet 2S, który także jest wystarczający do zasilania.
+    Ostatecznie użyto pakiet 2S, który także jest wystarczający do zasilania. Zestaw Arduino oraz nakładkę zasilono przy pomocy powerbanka, w związku na łatwość połączenia.
     \end{enumerate}
 
 \subsubsection{Dobór układu BMS}
@@ -663,7 +663,7 @@ W celu zabezpieczenia układu należy użyć układ BMS, który będzie zabezpie
     \label{fig:spec-BMS}
 \end{figure}
 
-By moduł BMS poprawnie kontrolował stan ogniw, należy go podłączyć w następujący sposób dla pakietu 2S (Rys. \ref{fig:BMS-2S-schematic}) oraz alternatywny pakietu 2S2P (Rys. \ref{fig:BMS-2S2P-schematic}). Wyjścia "0V", "4,2V" i "8,4V" z modułu BMS zostały przylutowane do koszyczków ogniw 18650, a wyjścia "+" i "-" wychodzą na zasilanie nakładki L293D Motor Driver Board.
+By moduł BMS poprawnie kontrolował stan ogniw, należy go podłączyć w następujący sposób dla pakietu 2S (Rys. \ref{fig:BMS-2S-schematic}) oraz alternatywny pakietu 2S2P (Rys. \ref{fig:BMS-2S2P-schematic}). Wyjścia "0V", "4,2V" i "8,4V" z modułu BMS zostały przylutowane do koszyczków ogniw 18650, a wyjścia "$+$" i "$-$" wychodzą na zasilanie nakładki L293D Motor Driver Board.
 
 \begin{figure}[H]
     \centering
@@ -697,7 +697,7 @@ Zastosowanie tej specyficznej architektury było niezbędne z uwagi na ogranicze
 
 Kod źródłowy rozpoczyna się od deklaracji oraz inicjalizacji zmiennych oraz stałych globalnych. Są to między innymi adresy czujników, typ wyliczeniowy zawierający informacje o aktualnej trajektorii robota oraz adresy pinów do których zostaną podłączone piny XSHUT. 
 
-Następnie w funkcji \texttt{setup()} wykonywana jest inicjalizacja czujników. Proces inicjalizacji rozpoczyna się od ustawienia odpowiedniego adresu dla każdego czujnika. Proces ten został opisany wcześniej. Kolejnym etapem jest właściwa inicjalizacja czujnika. Wykonywana jest ona za pomocą funkcji \texttt{init()} wywoływanej na każdej instancji obiektu czujnika. W przypadku błędnej inicjalizacji wyświetlany jest stosowny komunikat. Następnie dla każdego czujnika ustawiany jest czas maksymalnego oczekiwania na wartość (ang. timeout) za pomocą funkcji \texttt{setTimeout()}. Jest on ustawiony na wartość 500ms, zatem po tym czasie zostanie zwrócona wartość maksymalna dla typu UINT16. Ostanim zadaniem jest przełączenia czujnika w tryb odczytu ciągłęgo za pomocą funkcji \texttt{setContinuous()}.
+Następnie w funkcji \texttt{setup()} wykonywana jest inicjalizacja czujników. Proces inicjalizacji rozpoczyna się od ustawienia odpowiedniego adresu dla każdego czujnika. Proces ten został opisany wcześniej. Kolejnym etapem jest właściwa inicjalizacja czujnika. Wykonywana jest ona za pomocą funkcji \texttt{init()} wywoływanej na każdej instancji obiektu czujnika. W przypadku błędnej inicjalizacji wyświetlany jest stosowny komunikat. Następnie dla każdego czujnika ustawiany jest czas maksymalnego oczekiwania na wartość (ang. timeout) za pomocą funkcji \texttt{setTimeout()}. Jest on ustawiony na wartość 500ms, zatem po tym czasie zostanie zwrócona wartość maksymalna dla typu UINT16. Ostatnim zadaniem jest przełączenia czujnika w tryb odczytu ciągłego za pomocą funkcji \texttt{setContinuous()}.
 
 
 Następna funkcja typowa dla środowiska Arduino IDE to \texttt{setup()}. Funkcja ta zawiera wywołania czterech dodatkowych funkcji:
@@ -713,7 +713,7 @@ Następna funkcja typowa dla środowiska Arduino IDE to \texttt{setup()}. Funkcj
 Funkcja ta jest funkcją pomocniczą, niekonieczną do poprawnego działania programu. Jest ona jedna przydatna w celu weryfikacji poprawności połączenia urządzeń do magistrali I2C. W przypadku braku dostępnych urządzeń lub braku zgodności ich liczby należy zwrócić uwagę, czy wszystkie urządzenia są poprawnie podłączone do zasilania oraz do magistrali. Jeśli pierwsze w kolejności urządzenie podłączone do magistrali jest wadliwe lub zostało niepoprawnie podłączone, żadne kolejne urządzenie nie zostanie wykryte. 
 
 
-Realizacja wyszukiwania dostępnych urządzeń (adresów) jest relatywnie prosta. W pętli \texttt{for} poprzez wywołanie funckji \texttt{Wire.beginTransmission(int addr)} rozpoczynana jest próbna transmisja do potencjalnego urządzenia. Jeśli urzadzenie odpowie bez błędu, jego adres jest wyświelany w konsoli w postaci liczby w formacie szesnastkowym.
+Realizacja wyszukiwania dostępnych urządzeń (adresów) jest relatywnie prosta. W pętli \texttt{for} poprzez wywołanie funkcji \texttt{Wire.beginTransmission(int addr)} rozpoczynana jest próbna transmisja do potencjalnego urządzenia. Jeśli urzadzenie odpowie bez błędu, jego adres jest wyświetlany w konsoli w postaci liczby w formacie szesnastkowym.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{src/code_snaps/searchDevices.png}
@@ -724,7 +724,7 @@ Realizacja wyszukiwania dostępnych urządzeń (adresów) jest relatywnie prosta
 
 Implementacja funkcji czytania wartości z sensora jest bardzo prosrtolinijna. Za pomocą matody \texttt{readRangeContinuousMillimeters()} wywołanej na odpowiednim obiekcie klasy VL53L0X odczytywana jest wartość odległości wyrażona w milimetrach. Jednocześnie odczytana wartość jest przypisywana do odpowiedniej komórki w tablicy pomiarów. 
 
-We fragmencie kodu źródłowego można zauważyć wykomentowany fragment wyświelający wartość odległości. Został on wykorzystany w celu walidacji danych odczytywanych z czujników.
+We fragmencie kodu źródłowego można zauważyć wykomentowany fragment wyświetlający wartość odległości. Został on wykorzystany w celu walidacji danych odczytywanych z czujników.
 
 \begin{figure}[H]
     \centering
@@ -736,15 +736,15 @@ We fragmencie kodu źródłowego można zauważyć wykomentowany fragment wyświ
 
 Powyższa funkcja ma wagę fundamentalną pod kątem poprawności działania robota. Jednocześnie funkcja ta jest najbardziej złożona, przez co zostanie dodany cały kod źródłowy. 
 
-Funkcja rozpoczyna się od inicjalizacji zmiennej \texttt{currentTime()}, jej sens wyjaśni się w miarę zgłębiania logiki wyznacznaia sterowania. 
+Funkcja rozpoczyna się od inicjalizacji zmiennej \texttt{currentTime()}, jej sens wyjaśni się w miarę zgłębiania logiki wyznaczania sterowania. 
 
-Pierwsza instrukcja warunkowa sprawdza czy robot znajduje się we wnęce. Stan domyślny jest ustawniony na \texttt{false}. Następnie, zgodnie z dodanymi komentarzami, jeśli przed robotem oraz z prawej strony strony odległość jest większa niż stała \texttt{SAFE\_DIST}, wtedy robot dojedzie do ściany. Funkcja zwraca wartość na podstawie typu wyliczeniowego nadmienionego wcześniej. Dodatkowo w celach pomocniczych wyświetlany jest komunikat o aktualnej trajektorii. 
+Pierwsza instrukcja warunkowa sprawdza czy robot znajduje się we wnęce. Stan domyślny jest ustawiony na \texttt{false}. Następnie, zgodnie z dodanymi komentarzami, jeśli przed robotem oraz z prawej strony strony odległość jest większa niż stała \texttt{SAFE\_DIST}, wtedy robot dojedzie do ściany. Funkcja zwraca wartość na podstawie typu wyliczeniowego nadmienionego wcześniej. Dodatkowo w celach pomocniczych wyświetlany jest komunikat o aktualnej trajektorii. 
 
 Następne instrukcje warunkowe realizują sterowanie zgodnie z komentarzami. Warto zwrócić uwagę na instrukcję warunkową rozpoczynającą się w linii 15. Jeśli robot wykryje ścianę przed sobą, robot rozpoczyna ruch w lewo oraz przełącza flagę \texttt{wneka} na wartość \texttt{true}.
 
-Jeśli została wykryta wnęka wykonuje się alternatywna sekwencja instrukcji warunkowych. Jeśli przed robotem ciągle znaduje się przeszkoda, jego ruch pozostaje niezmienny w lewo. W przypadku, gdy czujniki wykryją wolną przestrzeń, włączany jest tryb wyjeżdzania z wnęki. 
+Jeśli została wykryta wnęka wykonuje się alternatywna sekwencja instrukcji warunkowych. Jeśli przed robotem ciągle znajduje się przeszkoda, jego ruch pozostaje niezmienny w lewo. W przypadku, gdy czujniki wykryją wolną przestrzeń, włączany jest tryb wyjeżdżania z wnęki. 
 
-Opuszczanie wnęki zostało zrealizowane za pomocą licznika, stąd deklaracja zmiennej \texttt{currentTime} na początku funkcji. W linii nr 55 sprawdzany jest warunek, czy czas przeznaczony na wyjazd z wnęki minął. Jeśli tak, pojazd przełącza się w tryb normalny, jeśli nie, pojazd kontunuuje jazdę prosto. 
+Opuszczanie wnęki zostało zrealizowane za pomocą licznika, stąd deklaracja zmiennej \texttt{currentTime} na początku funkcji. W linii nr 55 sprawdzany jest warunek, czy czas przeznaczony na wyjazd z wnęki minął. Jeśli tak, pojazd przełącza się w tryb normalny, jeśli nie, pojazd kontynuuje jazdę prosto. 
 
 Wyjaśnienie wykorzystania takiej struktury zostanie opisane w sekcji 3.3. 
 
@@ -758,7 +758,7 @@ Wyjaśnienie wykorzystania takiej struktury zostanie opisane w sekcji 3.3.
 
 \subsubsection*{Funkcja \texttt{sendSteering()}}
 
-Funkcja ta realizuje wysyłanie wartości odczytanej z funkcji prezetwarzającej dane z sensorów. Pierwszym krokiem jest rozpoczęcie transmisji z urządzeniem o adresie \texttt{0x09} - taki adres jest typowo przydzielany dla drugiego mikrokontrolera Arduino. Następnie za pomocą funkcji \texttt{Wire.write()} odbywa się włąściwy przesył danych poprzez magistralę I2C.
+Funkcja ta realizuje wysyłanie wartości odczytanej z funkcji przetwarzającej dane z sensorów. Pierwszym krokiem jest rozpoczęcie transmisji z urządzeniem o adresie \texttt{0x09} - taki adres jest typowo przydzielany dla drugiego mikrokontrolera Arduino. Następnie za pomocą funkcji \texttt{Wire.write()} odbywa się właściwy przesył danych poprzez magistralę I2C.
 
 \begin{figure}[H]
     \centering
@@ -833,7 +833,7 @@ Należy podkreślić, że algorytm sterujący w pełni spełnia założone wymag
 % Status: 100%
 % --------------------------------------------------------
 
-Problematyczne okazało się użytkowanie więcej niż jednego czujnika laserowego przy wykorzystaniu magistrali I2C. Było to spowodowane domyślnytm adresem, który był taki sam dla wszystkich czujników. 
+Problematyczne okazało się użytkowanie więcej niż jednego czujnika laserowego przy wykorzystaniu magistrali I2C. Było to spowodowane domyślnym adresem, który był taki sam dla wszystkich czujników. 
 
 Naturalnym krokiem jest wykorzystanie funkcji \texttt{setAddress()}, ustawiającej inny niż domyślny adres dla czujnika. Niestety wykorzystanie tylko tej funkcji nie przyniosło oczekiwanych rezultatów, w wyniku czego należało szukać rozwiązania dalej. 
 
@@ -849,17 +849,17 @@ Dokładny sposób podłączenia czujników oraz wykorzystania pinu XSHUT został
 %
 % Status: 80%
 % --------------------------------------------------------
-Pierwszym problemem było zamontowanie samych silników, okazało się że otwory na mocowanie silników znajdowały się w innych miejscach niż było to potrzebne. W związku z tym, konieczne było wporpwadzenie listwy aluminiowej, która pozwoliła na stabilne przymocowanie silników do dolnej części pojazdu.
+Pierwszym problemem było zamontowanie samych silników, okazało się że otwory na mocowanie silników znajdowały się w innych miejscach niż było to potrzebne. W związku z tym, konieczne było wprowadzenie listwy aluminiowej, która pozwoliła na stabilne przymocowanie silników do dolnej części pojazdu.
 
-Kolejnym wyzwaniem było mocowanie kół do silników. Początkowo użyto długich śrub, jednak okazało się, że koła są zbyt niestabilne. Aby wyeliminować luzy, wprowadzono boczne listwy aluminiowe, przez które przechodza długie gwintowane szprychy. To rozwiązanie znaczenie poprawiło stabilnośc kół i zminimalizowało luzy, zapewniając lepsze diałanie całogo układu.
+Kolejnym wyzwaniem było mocowanie kół do silników. Początkowo użyto długich śrub, jednak okazało się, że koła są zbyt niestabilne. Aby wyeliminować luzy, wprowadzono boczne listwy aluminiowe, przez które przechodza długie gwintowane szprychy. To rozwiązanie znaczenie poprawiło stabilność kół i zminimalizowało luzy, zapewniając lepsze działanie całego układu.
 
 Dzięki tym działaniom udało się rozwiązać napotkane problemy i zakończyć montaż kół i silników w sposób zapewniający solidność i niezawodność konstrukcji.   
 
 
 \subsection{\Large Implementacja logiki sterowania}
-Realizacja logiki realizującej śledzenie ściany bez elementu opuszczania wnęki była realtywnie prosta. Jednak dodanie sekwencji wyjeżdżania z wnęki okazało się wyzwaniem.
+Realizacja logiki realizującej śledzenie ściany bez elementu opuszczania wnęki była relatywnie prosta. Jednak dodanie sekwencji wyjeżdżania z wnęki okazało się wyzwaniem.
 
-Było tak ze względu na kolejność instrukcji warunkowych. Pierwotnie jeśli robot dojeżdzał do ściany jednocześnie mając z prawej swojej strony przeszkodę, poprawnie rozpoczynał ruch w lewo. Jednak po otrzymaniu informacji z sensora o pustej przestrzeni przed, robot od razu rozpoczynał ruch w prawo, ze względu na oddalenie się od prawej strony ściany. W wyniku czego pojazd jeździł tam i z powrotem w kółko. 
+Było tak ze względu na kolejność instrukcji warunkowych. Pierwotnie jeśli robot dojeżdżał do ściany jednocześnie mając z prawej swojej strony przeszkodę, poprawnie rozpoczynał ruch w lewo. Jednak po otrzymaniu informacji z sensora o pustej przestrzeni przed, robot od razu rozpoczynał ruch w prawo, ze względu na oddalenie się od prawej strony ściany. W wyniku czego pojazd jeździł tam i z powrotem w kółko. 
 
 Rozwiązaniem okazało się zastosowanie dodatkowego warunku sprawdzającego stan flagi \texttt{wneka} oraz wykorzystanie wymuszonego ruchu do przodu - opisany wcześniej licznik. Dzięki wykorzystaniu wymienionych ulepszeń, robot zarejetrowaniu pustej przestrzeni przed sobą, przez określony czas poruszał się przed siebie, w wyniku czego przynajmniej jeden z czujników z jego prawej strony otrzymywał owartość uniemożliwiającą ruch w prawo. 
 
