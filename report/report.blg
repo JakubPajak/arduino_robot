@@ -1,22 +1,22 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'report.blg'
-[77] biber-MSWIN64:340> INFO - === 
-[109] Biber.pm:419> INFO - Reading 'report.bcf'
-[183] Biber.pm:976> INFO - Using all citekeys in bib section 0
-[196] Biber.pm:4419> INFO - Processing section 0
-[205] Biber.pm:4610> INFO - Looking for bibtex file 'bibliography.bib' for section 0
-[256] bibtex.pm:1713> INFO - LaTeX decoding ...
-[266] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
-[308] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
-[308] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[308] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'pl-PL'
-[316] bbl.pm:660> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[318] bbl.pm:763> INFO - Output to report.bbl
-[318] Biber.pm:131> WARN - online entry 'DuracellChart' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry 'BMSSpec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry '18650Charts' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry 'MotorDriver' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry 'BMSSchematic' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry '18650Spec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:131> WARN - online entry 'MotorEngine' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
-[319] Biber.pm:133> INFO - WARNINGS: 7
+[139] biber-MSWIN64:340> INFO - === 
+[180] Biber.pm:419> INFO - Reading 'report.bcf'
+[291] Biber.pm:976> INFO - Using all citekeys in bib section 0
+[309] Biber.pm:4419> INFO - Processing section 0
+[321] Biber.pm:4610> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[418] bibtex.pm:1713> INFO - LaTeX decoding ...
+[432] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[495] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
+[495] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[495] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'pl-PL'
+[505] bbl.pm:660> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[509] bbl.pm:763> INFO - Output to report.bbl
+[509] Biber.pm:131> WARN - online entry 'MotorDriver' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry 'BMSSpec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry 'DuracellChart' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry '18650Spec' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry '18650Charts' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry 'MotorEngine' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:131> WARN - online entry 'BMSSchematic' (bibliography.bib): Invalid format '28.04.2024' of date field 'urldate' - ignoring
+[509] Biber.pm:133> INFO - WARNINGS: 7
