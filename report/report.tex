@@ -134,11 +134,11 @@ Przybliżone etapy rozwoju projektu:
 \end{enumerate}
 
 \subsection{\Large Panel sterowania w aplikacji}
-Podczas analizy możliwych rozwiązań problemu zdalnego sterowania robotem wybór padł na wykonanie aplikacji mobilnej oraz przesyłanie odpowiednich komend za pomocą protokołu BLE. Protokół BLE jest pewnym szczególnym przypadkiem ogólnego protokołu Bluetooth, jest on szczególnie często spotykany w przypadku mniej zaawansowanych mikrokontrolerów takich jak Arduino Uno R4. Dzięki odpowiedniej architekturze, protokól ten pozwala na bardziej efektywne zarządzanie pobieraną energią jednocześnie zachowując niezbędne funkcjonalności. 
+Podczas analizy możliwych rozwiązań problemu zdalnego sterowania robotem wybór padł na wykonanie aplikacji mobilnej oraz przesyłanie odpowiednich komend za pomocą protokołu BLE. Protokół BLE jest pewnym szczególnym przypadkiem ogólnego protokołu Bluetooth, jest on szczególnie często spotykany w przypadku mniej zaawansowanych mikrokontrolerów takich jak Arduino Uno R4. Dzięki odpowiedniej architekturze protokół ten pozwala na bardziej efektywne zarządzanie pobieraną energią, jednocześnie zachowując niezbędne funkcjonalności. 
 
-Przez wzgląd na wcześniej nabyte umijętności tworzenia aplikacji za pomocą języka Dart przez jednego z członków sekcji, prace nad projektem rozpoczęto od implementacji podstawowej wersji aplikacji realizującej proste przesyłanie informacji w postaci całkowitoliczbowej w celu późniejszej interpretacji otrzymanych danych w środowisku Arduino. 
+Przez wzgląd na wcześniej nabyte umiejętności tworzenia aplikacji za pomocą języka Dart przez jednego z członków sekcji, prace nad projektem rozpoczęto od implementacji podstawowej wersji aplikacji realizującej proste przesyłanie informacji w postaci całkowitoliczbowej w celu późniejszej interpretacji otrzymanych danych w środowisku Arduino. 
 
-Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poniższym raporcie szczegółowo omówiona. Zostanie przedstawiony podstawowy interfejs graficzny oraz zasada działania kluczowych funkcji, takich jak połączenie lub realizacja przesyłu danych. Autor uważa, iż pewne wyszczególnienie części metod oraz zastosowanych bibliotek może pomóc niektórym osobom w prostrzym znalezieniu informacji na temat poprawnie działającego połączenia z mikrokontrolerem Arduino poprzez Bluetooth.
+Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poniższym raporcie szczegółowo omówiona. Zostanie przedstawiony podstawowy interfejs graficzny oraz zasada działania kluczowych funkcji, takich jak połączenie lub realizacja przesyłu danych. Autor uważa, iż pewne wyszczególnienie części metod oraz zastosowanych bibliotek może pomóc niektórym osobom w prostszym znalezieniu informacji na temat poprawnie działającego połączenia z mikrokontrolerem Arduino poprzez Bluetooth.
 
 \subsection{\large Interfejs użytkownika aplikacji }
 % --------------------------------------------------------
@@ -151,7 +151,7 @@ Przez wzgląd na tematykę projektu implementacja aplikacji nie zostanie w poni�
 
 Interfejs użytkownika został zaprojektowany w celu umożliwienia podstawowej kontroli nad robotem. Z tego względu, nie poświęcono mu znacznej ilości czasu na poprawę estetyki.
 
-Po uruchomieniu aplikacji, użytkownik trafia na ekran początkowy (ang. Home), przedstawiony na Rysunku \ref{fig:home_screen}. Ekran ten zawiera cztery wyróżnione obszary, każdy z których pełni określoną funkcję. Pierwsza sekcja ma na celu wprowadzenie nowego użytkownika w sposób bezpiecznego i poprawnego korzystania oraz sterowania robotem.
+Po uruchomieniu aplikacji użytkownik trafia na ekran początkowy (ang. Home), przedstawiony na Rysunku \ref{fig:home_screen}. Ekran ten zawiera cztery wyróżnione obszary, każdy z których pełni określoną funkcję. Pierwsza sekcja ma na celu wprowadzenie nowego użytkownika w sposób bezpiecznego i poprawnego korzystania oraz sterowania robotem.
 
 Druga sekcja prowadzi do ustawień wyglądu aplikacji, gdzie użytkownik może dostosować kolorystykę i inne elementy graficzne interfejsu.
 
@@ -186,7 +186,7 @@ W lewym górnym rogu ekranu znajduje się standardowy dla aplikacji mobilnych pr
     \label{fig:side-menu}
 \end{figure}
 
-Po kliknięciu w pierwszą zakładkę użytkownik zostaje przekierowany do strony odpowiedzialnej za sterowanie robotem. Ekran ten podzielony jest na dwie sekcje. Pierwsza z nich, zatytułowana \textit{Controls} (Kontrolki), umożliwia bezpośrednie sterowanie robotem poprzez odpowiednie przyciski. Po prawej stronie znajduje się sekcja, która w przyszłości ma wyświetlać animację przedstawiającą robota w ruchu.
+Po włączeniu pierwszej zakładki użytkownik zostaje przekierowany do strony odpowiedzialnej za sterowanie robotem. Ekran ten podzielony jest na dwie sekcje. Pierwsza z nich, zatytułowana \textit{Controls} (Kontrolki), umożliwia bezpośrednie sterowanie robotem poprzez odpowiednie przyciski. Po prawej stronie znajduje się sekcja, która w przyszłości ma wyświetlać animację przedstawiającą robota w ruchu.
 
 \begin{figure}[H]
     \centering
@@ -204,7 +204,7 @@ Kolejną zakładką jest ekran wyświetlający dostępne urządzenia Bluetooth. 
     \label{fig:Connect}
 \end{figure}
 
-Zakładki takie jak \textit{Settings} (Ustawienia) i \textit{Help} (Pomoc) nie zostały zaimplementowane z powodu zmiany priorytetów podczas rozwoju projektu. Niemniej jednak, aplikacja ma duży potencjał rozwoju i może zostać rozbudowana w przyszłości.
+Zakładki takie jak \textit{Settings} (Ustawienia) i \textit{Help} (Pomoc) nie zostały zaimplementowane z powodu zmiany priorytetów podczas rozwoju projektu. Niemniej jednak aplikacja ma duży potencjał rozwoju i może zostać rozbudowana w przyszłości.
 
 \subsection{\Large Implementacja połączenia Bluetooth}
 % --------------------------------------------------------
@@ -226,7 +226,7 @@ Pierwszym krokiem do nawiązania połączenia jest wyświetlenie listy wszystkic
 
 Funkcja \texttt{\_getPairedDevices()} zwraca wszystkie urządzenia, które zostały pomyślnie sparowane.
 
-Po zakończeniu skanowania, proces jest zamykany przy pomocy funkcji \texttt{\_stopScan()}.
+Po zakończeniu skanowania proces jest zamykany przy pomocy funkcji \texttt{\_stopScan()}.
 
 \begin{figure}[H]
     \centering
@@ -256,7 +256,7 @@ Kolejnym krokiem jest nawiązanie połączenia z wybranym urządzeniem. Proces t
 
 Proces przesyłania informacji do urządzenia Bluetooth opiera się na metodzie \texttt{sendValueToArduino()}. Ta metoda przyjmuje dwa parametry: referencję do połączonego urządzenia oraz wartość, która ma zostać przesłana.
 
-Pierwszym krokiem w tej metodzie jest weryfikacja, czy urządzenie zostało poprawnie połączone oraz czy jest możliwe przesłanie danych. W przypadku niepowodzenia tej weryfikacji, w konsoli zostaje wyświetlona stosowna informacja diagnostyczna, co pozwala na szybkie zidentyfikowanie problemu.
+Pierwszym krokiem w tej metodzie jest weryfikacja, czy urządzenie zostało poprawnie połączone oraz, czy jest możliwe przesłanie danych. W przypadku niepowodzenia tej weryfikacji, w konsoli zostaje wyświetlona stosowna informacja diagnostyczna, co pozwala na szybkie zidentyfikowanie problemu.
 
 Następnie metoda wyszukuje urządzenia o konkretnej charakterystyce, która jest niezbędna do prawidłowego funkcjonowania połączenia. Znalezienie urządzenia o odpowiedniej charakterystyce jest kluczowe, ponieważ zapewnia, że dane zostaną przesłane do właściwego odbiorcy.
 
@@ -273,14 +273,14 @@ Poniżej znajduje się fragment kodu źródłowego, który ilustruje implementac
 
 
 \subsection{\Large Implementacja prostego skryptu w odczytującego dane z kanału BLE }
-Fragment prezentowanego kodu rozpoczyna się od zadeklarowania zmiennych globalnych opisujących charakterystyki połączenia Bluetooth. Pierwsza charakterystyka określa identyfikator typu GUID serwisu, następna określa na jaki identyfikator przesyłane są zdarzenia typu "request". Ostatnia wartość definiuje indentyfikator na jaki są przesyłane zdarzenia typu 'response". 
+Fragment prezentowanego kodu rozpoczyna się od zadeklarowania zmiennych globalnych opisujących charakterystyki połączenia Bluetooth. Pierwsza charakterystyka określa identyfikator typu GUID serwisu, następna określa, na jaki identyfikator przesyłane są zdarzenia typu "request". Ostatnia wartość definiuje identyfikator, na jaki są przesyłane zdarzenia typu 'response". 
 W przypadku aktualnej wersji aplikacji istotna jest tylko wartość identyfikująca serwis oraz zdarzenia typu request, ponieważ mikrokontroler nie zwraca żadnej informacji do aplikacji. W razie dalszego rozwoju projektu zostanie zaimplementowanie wyświetlanie diagnostyki robota, stanu naładowania baterii oraz stanu pracy silników. 
 
-Funkcja \texttt{t5Callback()} ma za zadanie pobierać wartość która aktualnie została przesłana do kanału Bluetooth z poziomu aplikacji. Argumenty wejściowe funkcji to urządzenie z którym Arduino nawiązało połączenie, drugi argument to wcześniej wspomniany identyfikator zdarzenia "request".
+Funkcja \texttt{t5Callback()} ma za zadanie pobierać wartość, która aktualnie została przesłana do kanału Bluetooth z poziomu aplikacji. Argumenty wejściowe funkcji to urządzenie, z którym Arduino nawiązało połączenie, drugi argument to wcześniej wspomniany identyfikator zdarzenia "request".
 
 Następnie wartość jest odczytywana z kanału za pomocą funkcji \texttt{readValue()}. Funkcja ta jest częścią biblioteki \texttt{ArduinoBLE.h}.
 
-W funkcji \texttt{setup()} następuje inicjalizacja odpowiednich charakterystyk oraz za pomocą funkcji \newline \texttt{setEventHandler()} zostaje określona sytuacja w której nastąpi wywołanie funkcji \texttt{t5Callback} oraz odczytanie danych z kanału. 
+W funkcji \texttt{setup()} następuje inicjalizacja odpowiednich charakterystyk oraz za pomocą funkcji \newline \texttt{setEventHandler()} zostaje określona sytuacja, w której nastąpi wywołanie funkcji \texttt{t5Callback} oraz odczytanie danych z kanału. 
 
 \begin{figure}[H]
     \centering
@@ -311,7 +311,7 @@ Ten etap pozwalał zidentyfikować ewentualne problemy konstrukcyjne i funkcjona
 \end{figure}
 
 Kolejnym krokiem było opracowanie specjalnej obudowy, zdolnej pomieścić wszystkie wymagane elementy, przy jednoczesnym zachowaniu odpowiedniej geometrii kół szwedzkich (zwanych również kołami Mecanum). 
-Aby robot działał zgodnie z założeniami, koła musiały być rozmieszczone w orientacji X Y równych odstępach od siebie, a ich rolki powinny być skierowane do środka. Konieczne jest aby z rzutu górnego posiadał przedłużenie osi kół w kształcie znaku X. 
+Aby robot działał zgodnie z założeniami, koła musiały być rozmieszczone w orientacji X Y równych odstępach od siebie, a ich rolki powinny być skierowane do środka. Konieczne jest, aby z rzutu górnego posiadał przedłużenie osi kół w kształcie znaku X. 
 
 
 \begin{figure}[H]
@@ -330,7 +330,7 @@ Aby robot działał zgodnie z założeniami, koła musiały być rozmieszczone w
 \end{figure}
 
 Jednakże podczas pierwszego etapu projektu nastąpiły problemy logiczne i konstrukcyjne. Pierwotnie używany darmowy program Blender 4.1 okazał się niewystarczający ze względu na niezgodność formatów eksportu z wymaganiami dostępnej drukarki 3D. 
-W związku z tym, konieczne było przejście na bardziej zaawansowane narzędzie, jakim jest AutoDesk Fusion. To oprogramowanie pozwoliło na dokładniejsze zaprojektowanie modelu, uwzględniając specyfikację drukarki, która posiadała obszar roboczy o wymiarach 25 cm x 25 cm. 
+W związku z tym konieczne było przejście na bardziej zaawansowane narzędzie, jakim jest AutoDesk Fusion. To oprogramowanie pozwoliło na dokładniejsze zaprojektowanie modelu, uwzględniając specyfikację drukarki, która posiadała obszar roboczy o wymiarach 25 cm x 25 cm. 
 Z tego powodu, model musiał zostać zaprojektowany od nowa, z uwzględnieniem ograniczeń.
 
 \begin{figure}[H]
@@ -342,8 +342,8 @@ Z tego powodu, model musiał zostać zaprojektowany od nowa, z uwzględnieniem o
 
 \newpage
 
-Gotowy produkt składa się z dwóch pięter, z których każde pełni inną funkcje. 
-Pierwsze piętro to "piętro maszynowe", gdzie umieszczone zostały moduły napędowe, takie jak silniki kątowe z przekładnia oraz ogniwa zasilające w ilości dwóch wraz ze sterownikiem BMS. 
+Gotowy produkt składa się z dwóch pięter, z których każde pełni inną funkcję. 
+Pierwsze piętro to "piętro maszynowe", gdzie umieszczone zostały moduły napędowe, takie jak silniki kątowe wraz z przekładnią oraz ogniwa zasilające w ilości dwóch wraz ze sterownikiem BMS. 
 Wszystkie istotne kable zostały przeprowadzone przez specjalnie przygotowany otwór do drugiego piętra.
 
 \begin{figure}[htbp]
@@ -371,7 +371,7 @@ Takie rozmieszczenie i organizacja komponentów pozwalają na efektywne zarządz
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{"src/Robot_pics/Gora.png"}
-        \caption{Widok rzutu górnego na drugie piętro modelu. Znajdują się w nim dwa mikronotrolery Arduino UNO oraz płytka stykowa.}
+        \caption{Widok rzutu górnego na drugie piętro modelu. Znajdują się w nim dwa mikrokontrolery Arduino UNO oraz płytka stykowa.}
         \label{fig:zdjecie1}
     \end{minipage}
     \hfill
@@ -400,7 +400,7 @@ Takie rozmieszczenie i organizacja komponentów pozwalają na efektywne zarządz
 \newpage
 
 Gotowy model zawiera się w wymiarach 20 cm x 20 cm x 15 cm oraz wykonuje wszystkie zadane ruchy zdolne do wykonania tylko przy pomocy
-kół szwedzkich. Pojazd wykonuje jazdę w kierunku w przód i w tył oraz w lewo i w prawo jak i obrót w miejscu.
+kół szwedzkich. Pojazd wykonuje jazdę w kierunku w przód i w tył oraz w lewo i w prawo, jak i obrót w miejscu.
 
 \begin{figure}[H]
     \centering
@@ -475,11 +475,11 @@ Wykonanie powyższej sekwencji gwarantuje poprawną zmianę adresu czujnika na m
 %
 % TODO: Opisać sposób montażu silników oraz usztywnienia wału silnika + montaż kół
 %
-% Status: 90%
+% Status: 100%
 % --------------------------------------------------------
-Silniki zostały przymocowane do dolnej części pojazdu za pomocą taśmy aluminiowej. Po wykonaniu tego kroku, przystąpiono do montażu kół na silnikach. Koła zostały zamontowane na wygwintowanej szprysze, która została przymocowana bezpośrednio do silników.
+Silniki zostały przymocowane do dolnej części pojazdu za pomocą taśmy aluminiowej. Po wykonaniu tego kroku przystąpiono do montażu kół na silnikach. Koła zostały zamontowane na wygwintowanej szprysze, która została przymocowana bezpośrednio do silników.
 
-W celu wyeliminowania luzów na silnikach, podjęto dodatkowe działania. Wycięto dwie listwy aluminiowe, które zamontowano w taki sposób, aby przez nie przechodziły szprychy. Dzięki zastosowaniu tych listew, luz na kołach został znacznie zminimalizowany, co zapewniło stabilność całej konstrukcji.
+W celu wyeliminowania luzów na silnikach podjęto dodatkowe działania. Wycięto dwie listwy aluminiowe, które zamontowano w taki sposób, aby przez nie przechodziły szprychy. Dzięki zastosowaniu tych listew, luz na kołach został znacznie zminimalizowany, co zapewniło stabilność całej konstrukcji.
 
 Wykonanie tych czynności pozwoliło na usztywnienie wału silnika i zapewniło solidne połączenie kół z silnikami.
 \begin{figure}[H]
